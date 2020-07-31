@@ -6,5 +6,7 @@ namespace MarvelApp
 {
     public class AppSettings
     {
+        public static string PublicKey = "a74cebac8fa9e066338acbe3985f47ef";
+        public static string PrivateKey = "d7a72f66cde6663e6880b10b7ae73334cfd9174f";
     }
 }

@@ -6,10 +6,18 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
+using Android.Content.Res;
 
 namespace MarvelApp.Droid
 {
-    [Activity(Label = "MarvelApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Marvel", 
+        Icon = "@mipmap/icon", 
+        Theme = "@style/MainTheme", 
+        MainLauncher = true,
+        //Android 7+ 
+        RoundIcon = "@mipmap/launcher_foreground",
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -18,7 +26,19 @@ namespace MarvelApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            if (IsTablet(ApplicationContext))
+                RequestedOrientation = ScreenOrientation.Landscape;
+            else
+                RequestedOrientation = ScreenOrientation.Portrait;
+            int uiOptions = (int)Window.DecorView.SystemUiVisibility;
+            //uiOptions |= (int)SystemUiFlags.LowProfile;
+            uiOptions |= (int)SystemUiFlags.Fullscreen;
+            uiOptions |= (int)SystemUiFlags.HideNavigation;
+            uiOptions |= (int)SystemUiFlags.ImmersiveSticky;
+            uiOptions |= (int)SystemUiFlags.LayoutFullscreen;
+            Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
+            Window.AddFlags(WindowManagerFlags.Fullscreen);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
@@ -28,6 +48,22 @@ namespace MarvelApp.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        public static bool IsTablet(Context context)
+        {
+            ScreenLayout screenSize = context.Resources.Configuration.ScreenLayout & ScreenLayout.SizeMask;
+            bool tablet = false;
+
+            switch (screenSize)
+            {
+                case ScreenLayout.SizeXlarge:
+                    tablet = true;
+                    break;
+                case ScreenLayout.SizeLarge:
+                    tablet = true;
+                    break;
+            }
+            return tablet;
         }
     }
 }

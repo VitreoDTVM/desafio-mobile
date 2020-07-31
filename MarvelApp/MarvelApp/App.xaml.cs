@@ -6,11 +6,12 @@ namespace MarvelApp
 {
     public partial class App : Application
     {
+        public static string BaseUrl = "https://gateway.marvel.com/v1/public/";
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage( new MainPage());
         }
 
         protected override void OnStart()
