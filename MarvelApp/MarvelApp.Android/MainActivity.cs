@@ -8,7 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Content;
 using Android.Content.Res;
-
+using FFImageLoading.Forms.Platform;
 namespace MarvelApp.Droid
 {
     [Activity(Label = "Marvel", 
@@ -39,6 +39,7 @@ namespace MarvelApp.Droid
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
             Window.AddFlags(WindowManagerFlags.Fullscreen);
+            CachedImageRenderer.Init(true);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

@@ -14,6 +14,7 @@ namespace MarvelApp.Services
     using System.Security.Cryptography;
 	using System.Text;
     using System.Threading.Tasks;
+    using Xamarin.Essentials;
 
     public class DataService
     {
@@ -33,10 +34,15 @@ namespace MarvelApp.Services
 		public DataService()
         {
 
-			var hash = GetHash($"{AppSettings.PrivateKey}{AppSettings.PublicKey}");
+            client = new HttpClient()
+            {
+                BaseAddress = new Uri(App.BaseUrl)
+            };
+            Barrel.ApplicationId = AppInfo.PackageName;
+            barrel = Barrel.Create(FileSystem.AppDataDirectory);
 
 
-		}
+        }
         public void ClearCache(string key)
         {
             Barrel.Current.Empty(key);
@@ -89,27 +95,7 @@ namespace MarvelApp.Services
                     };
                 }
             }
-            //if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-            //    list = Barrel.Current.Get<List<T>>(key);
-            //else if (!forceRefresh && !Barrel.Current.IsExpired(key))
-            //    list = Barrel.Current.Get<List<T>>(key);
-
-
         }
-        private string GetHash(string input)
-		{
-			using (var hash = MD5.Create())
-			{
-				byte[] data = hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-				var strBuilder = new StringBuilder();
-
-				for (int i = 0; i < data.Length; i++)
-				{
-					strBuilder.Append(data[i].ToString("x2"));
-				}
-
-				return strBuilder.ToString();
-			}
-		}
-	}
+       
+    }
 }
