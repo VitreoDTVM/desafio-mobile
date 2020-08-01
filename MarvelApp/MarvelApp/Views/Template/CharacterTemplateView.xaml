@@ -4,10 +4,16 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
+                          xmlns:fonts="clr-namespace:MarvelApp.Resources.Fonts"
+
              BackgroundColor="#121212"
              x:Class="MarvelApp.Views.Template.CharacterTemplateView">
   <ContentView.Content>
         <StackLayout Margin="0,70,0,0">
+            <Label Text="{x:Static fonts:Icon.Search}" 
+                                   FontSize="24" 
+                   HorizontalOptions="Center"
+                                   ></Label>
             <CollectionView Margin="0,0,0,0" 
                                     SelectionMode="None" 
                                     x:Name="heroescollectionview" 
@@ -63,7 +69,8 @@
                             </Grid>
 
                             <Label HorizontalTextAlignment="Center" 
-                                           TextColor="White" 
+                                           TextColor="White" FontFamily="FontAwesomeBold" 
+                                           IsEnabled="{Binding IsClick}"
                                            Text="{Binding Name}" />
                         </StackLayout>
                     </DataTemplate>

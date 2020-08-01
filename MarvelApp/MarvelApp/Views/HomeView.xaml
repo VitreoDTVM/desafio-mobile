@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:cachedImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             xmlns:templates="clr-namespace:MarvelApp.Views.Template"
+             xmlns:templates="clr-namespace:MarvelApp.Views.Template" 
+             xmlns:converters="clr-namespace:MarvelApp.Converters"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              x:Class="MarvelApp.Views.HomeView">
@@ -15,6 +16,7 @@
                 <Setter Property="WidthRequest" Value="40" />
                 <Setter Property="Margin" Value="10,0" />
             </Style>
+            <converters:StringCaseConverter x:Key="caseConverter" />
         </ResourceDictionary>
         <templates:AppPageDataTemplateSelector x:Key="AppPageDataTemplateSelector" />
     </ContentPage.Resources>
@@ -24,7 +26,7 @@
                 x:Name="CarouselView"
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 AbsoluteLayout.LayoutFlags="All"
-                Margin="{OnIdiom Phone='0,0,0,0', Tablet='0,18,0,0'}"
+                Margin="{OnIdiom Phone='0,0,0,0'}"
                 IsSwipeEnabled="False"
                 CurrentItemChanged="CarouselView_CurrentItemChanged"
                 ItemTemplate="{StaticResource AppPageDataTemplateSelector}"
@@ -57,27 +59,6 @@
                         </Grid>
                     </FlexLayout>
                 </OnIdiom.Phone>
-                <OnIdiom.Tablet>
-                    <Grid AbsoluteLayout.LayoutBounds="0,0,1,100" AbsoluteLayout.LayoutFlags="WidthProportional">
-                        <Image Aspect="AspectFill" Source="gradient" />
-
-                        <FlexLayout Padding="20,24,20,0" BackgroundColor="Transparent">
-                            <FlexLayout AlignItems="Center" FlexLayout.Grow="1">
-                                <cachedImage:CachedImage Source="logotransparent" 
-                                       Aspect="Fill" 
-                                       HeightRequest="100" 
-                                       WidthRequest="150" 
-                                       VerticalOptions="Start"/>
-                            </FlexLayout>
-
-                            <FlexLayout
-                                AlignItems="Center"
-                                FlexLayout.Grow="1"
-                                JustifyContent="End">
-                            </FlexLayout>
-                        </FlexLayout>
-                    </Grid>
-                </OnIdiom.Tablet>
             </OnIdiom>
             <FlexLayout Opacity="0.7"
                 x:Name="Footer"
@@ -93,7 +74,6 @@
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </StackLayout.GestureRecognizers>
-
                             <Image HeightRequest="60" WidthRequest="60" Opacity="0.6" Aspect="Fill" Source="{Binding Icon}">
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup>
@@ -102,7 +82,6 @@
                                                 <Setter Property="Source" Value="{Binding Icon}" />
                                             </VisualState.Setters>
                                         </VisualState>
-
                                         <VisualState x:Name="Selected">
                                             <VisualState.Setters>
                                                 <Setter Property="Source" Value="{Binding Icon, StringFormat='{0}_select'}" />
@@ -112,27 +91,9 @@
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
                             </Image>
-
-                            <!--<Label HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="10" Text="{Binding Name}">
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup>
-                                            <VisualState x:Name="UnSelected">
-                                                <VisualState.Setters>
-                                                    <Setter Property="TextColor" Value="#CFCFCF" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState x:Name="Selected">
-                                                <VisualState.Setters>
-                                                <Setter Property="TextColor" Value="White" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                </Label>-->
                         </StackLayout>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
-
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

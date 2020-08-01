@@ -18,14 +18,14 @@ namespace MarvelApp.ViewModels
         private ObservableRangeCollection<Result> _heroes;
         private ObservableRangeCollection<Item> _items;
         private bool _Click = true;
-        public Command<Item> GoToDetails { get; set; }
+        public Command<Result> GoToDetails { get; set; }
 
         public CharacterViewModel(DataService dataService)
         {
             this.dataService = dataService;
             Items = new ObservableRangeCollection<Item>();
             Heroes = new ObservableRangeCollection<Result>();
-            GoToDetails = new Command<Item>(async (heroe) => await GoToHeroesDetails(heroe));
+            GoToDetails = new Command<Result>(async (heroe) => await GoToHeroesDetails(heroe));
 
             IsClick = true;
         }
@@ -55,7 +55,7 @@ namespace MarvelApp.ViewModels
         }
 
 
-        private async Task GoToHeroesDetails(Item item)
+        private async Task GoToHeroesDetails(Result item)
         {
             //Trava duplo clique acidental :) 
             if (!IsClick)

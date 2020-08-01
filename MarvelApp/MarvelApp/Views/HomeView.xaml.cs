@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 
 namespace MarvelApp.Views
 {
-    [DesignTimeVisible(false)]
+    [DesignTimeVisible(true)]
     public partial class HomeView : ContentPage
     {
         private HomeViewModel vm;
