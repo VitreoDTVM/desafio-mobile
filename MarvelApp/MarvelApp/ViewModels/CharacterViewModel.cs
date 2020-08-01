@@ -1,8 +1,11 @@
 ﻿using MarvelApp.Models;
 using MarvelApp.Services;
+using MarvelApp.Views.Template;
 using MvvmHelpers;
+using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,49 +15,91 @@ namespace MarvelApp.ViewModels
     public class CharacterViewModel:BaseViewModel
     {
         private DataService dataService;
-        private ObservableRangeCollection<Character> _characters;
+        private ObservableRangeCollection<Result> _heroes;
+        private ObservableRangeCollection<Item> _items;
+        private bool _Click = true;
+        public Command<Item> GoToDetails { get; set; }
 
         public CharacterViewModel(DataService dataService)
         {
             this.dataService = dataService;
+            Items = new ObservableRangeCollection<Item>();
+            Heroes = new ObservableRangeCollection<Result>();
+            GoToDetails = new Command<Item>(async (heroe) => await GoToHeroesDetails(heroe));
+
+            IsClick = true;
         }
-        public ObservableRangeCollection<Character> Characters {
+        public ObservableRangeCollection<Result> Heroes {
             get {
-                return _characters;
+                return _heroes;
             }
             set {
-                SetProperty(ref _characters, value);
+                SetProperty(ref _heroes, value);
             }
         }
-        public async Task InitializeAsync()
+        public ObservableRangeCollection<Item> Items {
+            get {
+                return _items;
+            }
+            set {
+                SetProperty(ref _items, value);
+            }
+        }
+        public bool IsClick {
+            get {
+                return _Click;
+            }
+            set {
+                SetProperty(ref _Click, value);
+            }
+        }
+
+
+        private async Task GoToHeroesDetails(Item item)
+        {
+            //Trava duplo clique acidental :) 
+            if (!IsClick)
+            {
+                IsClick = true;
+                return;
+            }
+            IsClick = false;
+
+            // await App.Current.MainPage.Navigation.PushModalAsync(new CharacterDetailView(item), true);
+            //libera caso ele volte a página :)
+            IsClick = true;
+
+        }
+        public async Task InitializeAsync(string search = "")
         {
             try
             {
                 var guid = Guid.NewGuid().ToString();
-                var publickey = GetHash(guid  + AppSettings.PrivateKey + AppSettings.PublicKey);
+                var publickey = GetHash(guid + AppSettings.PrivateKey + AppSettings.PublicKey);
                 var privatekey = GetHash(AppSettings.PrivateKey);
-                var endpoint = $"characters?apikey={AppSettings.PublicKey}&hash={publickey}&ts={guid}";
+                var endpoint = $"characters?apikey={AppSettings.PublicKey}&hash={publickey}&ts={guid}&limit=10&offset=1";
                 var response = await dataService.GetAsync<Character>(endpoint, "character", 100);
                 var list = (List<Models.Result>)response.Result;
                 if (list.Count > 0 && list != null)
                 {
-
+                    Heroes.AddRange(list);
                 }
                 else
                 {
-                    Characters = new ObservableRangeCollection<Character>();
-                    Characters.AddRange(Characters);
+                    Heroes = new ObservableRangeCollection<Result>();
+                    Heroes.AddRange(Heroes);
                 }
             }
             catch (Exception exception)
             {
 
-                var properties = new Dictionary<string, string> {{"CharacterViewModel.cs", "InitializeAsync"}};
+                var properties = new Dictionary<string, string> { { "CharacterViewModel.cs", "InitializeAsync" } };
                 //Crashes.TrackError(exception, properties);
 
-                Characters = new ObservableRangeCollection<Character>();
-                Characters.AddRange(Characters);
+                Heroes = new ObservableRangeCollection<Result>();
+                Heroes.AddRange(Heroes);
             }
+
         }
         //Inspirado nessa implementação com adaptações https://www.c-sharpcorner.com/article/compute-sha256-hash-in-c-sharp/
         public string GetHash(string input)

@@ -13,6 +13,16 @@ namespace MarvelApp.Models
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
+        public string ImagePath {
+            get {
+                if (string.IsNullOrEmpty(Path))
+                {
+                    return "noimage";
+                }
+
+                return string.Format($"{Path.Replace("http","https")}{"."}{Extension}");
+            }
+        }
     }
 
     public class Item

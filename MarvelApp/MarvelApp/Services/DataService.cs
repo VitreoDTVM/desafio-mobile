@@ -52,18 +52,18 @@ namespace MarvelApp.Services
             var json = string.Empty;
 
             List<T> list = new List<T>();
-            list = Barrel.Current.Get<List<T>>(key);
-            var check = Barrel.Current.IsExpired(key: key);
-            if (list != null && !check)
-            {
-                return new Response
-                {
-                    IsSuccess = true,
-                    Result = list,
-                };
-            }
-            else
-            {
+            //list = Barrel.Current.Get<List<T>>(key);
+            //var check = Barrel.Current.IsExpired(key: key);
+            //if (list != null && !check)
+            //{
+            //    return new Response
+            //    {
+            //        IsSuccess = true,
+            //        Result = list,
+            //    };
+            //}
+            //else
+            //{
 
                 try
                 {
@@ -93,7 +93,7 @@ namespace MarvelApp.Services
                         Result = list,
                     };
                 }
-            }
+            //}
         }
        
     }

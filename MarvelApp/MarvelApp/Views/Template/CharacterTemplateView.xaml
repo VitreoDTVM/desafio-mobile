@@ -2,12 +2,73 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
+             BackgroundColor="#121212"
              x:Class="MarvelApp.Views.Template.CharacterTemplateView">
   <ContentView.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
+        <StackLayout Margin="0,70,0,0">
+            <CollectionView Margin="0,0,0,0" 
+                                    SelectionMode="None" 
+                                    x:Name="heroescollectionview" 
+                                    VerticalOptions="FillAndExpand"
+                                    ItemsSource="{Binding ViewModel.Heroes}">
+                <CollectionView.EmptyView>
+                    <Label
+                        Padding="0,0,0,100"
+                        FontSize="Title"
+                        HorizontalTextAlignment="Center"
+                        Text="VOCÊ AINDA NÃO ADICIONOU FAVORITOS :("
+                        TextColor="#7B7B7C"
+                        VerticalTextAlignment="Center" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="20"
+                        Orientation="Vertical"
+                        Span="{OnIdiom Phone=2, Tablet=5}"
+                        VerticalItemSpacing="40" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid HeightRequest="{OnIdiom Phone=200, Tablet=200}" 
+                                          HorizontalOptions="Center">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                                          Command="{Binding Source={x:Reference heroescollectionview}, Path=BindingContext.ViewModel.GoToDetails}" 
+                                                          CommandParameter="{Binding}"/>
+                                </Grid.GestureRecognizers>
+                                <Frame HeightRequest="{OnIdiom Phone=200, Tablet=400}" 
+                                       Padding="0" 
+                                       CornerRadius="10" 
+                                       BackgroundColor="Transparent">
+                                    <ffimageloading:CachedImage IsEnabled="{Binding ViewModel.IsClick}" 
+                                                                        Aspect="Fill" 
+                                                                        HorizontalOptions="FillAndExpand"
+                                                                        LoadingPlaceholder="{OnIdiom Phone='imageplaceholder', Tablet='imageplaceholdertablet'}" 
+                                                                        LoadingDelay="3" 
+                                                                        HeightRequest="{OnIdiom Tablet=400}"
+                                                                        WidthRequest="{OnIdiom Phone=200, Tablet=500}"
+                                                                        LoadingPriority="High"
+                                                                        Source="{Binding Thumbnail.ImagePath}">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                                  NumberOfTapsRequired="1" 
+                                                                  Command="{Binding Source={x:Reference heroescollectionview},Path=BindingContext.ViewModel.GoToDetails}" 
+                                                                  CommandParameter="{Binding}"/>
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+                                </Frame>
+                            </Grid>
+
+                            <Label HorizontalTextAlignment="Center" 
+                                           TextColor="White" 
+                                           Text="{Binding Name}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
   </ContentView.Content>
 </ContentView>
