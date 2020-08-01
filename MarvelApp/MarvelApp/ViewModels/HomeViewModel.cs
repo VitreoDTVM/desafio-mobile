@@ -41,7 +41,7 @@ namespace MarvelApp.ViewModels
             {
                 new AppPage
                 {
-                    Name = "FILMES",
+                    Name = "PERSONAGENS",
                     Icon = "menu_movie",
                     Type = AppPageType.Character,
                     ViewModel = characterViewModel

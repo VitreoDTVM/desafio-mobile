@@ -69,18 +69,17 @@ namespace MarvelApp.Services
                 {
                     if (string.IsNullOrWhiteSpace(json))
                     {
-                        //await SetHeader();
 
                         json = await client.GetStringAsync(url);
-
                         Barrel.Current.Add(key, json, TimeSpan.FromMilliseconds(mins));
                     }
-                    var response = JsonConvert.DeserializeObject<List<T>>(json);
 
+                    var response = JsonConvert.DeserializeObject<Models.Character>(json);
+                    var resp = response.Data.Results;
                     return new Response
                     {
                         IsSuccess = true,
-                        Result = response,
+                        Result = resp,
                     };
                     //return JsonConvert.DeserializeObject<T>(json);
                 }

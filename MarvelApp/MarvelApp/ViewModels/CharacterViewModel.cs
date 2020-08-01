@@ -31,11 +31,11 @@ namespace MarvelApp.ViewModels
             try
             {
                 var guid = Guid.NewGuid().ToString();
-                var publickey = GetHash(AppSettings.PublicKey);
+                var publickey = GetHash(guid  + AppSettings.PrivateKey + AppSettings.PublicKey);
                 var privatekey = GetHash(AppSettings.PrivateKey);
-                var endpoint = $"characters?apikey={publickey}&hash={privatekey}";
-                var response = await dataService.GetAsync<Character>(endpoint, "characters", 100);
-                var list = (List<Character>)response.Result;
+                var endpoint = $"characters?apikey={AppSettings.PublicKey}&hash={publickey}&ts={guid}";
+                var response = await dataService.GetAsync<Character>(endpoint, "character", 100);
+                var list = (List<Models.Result>)response.Result;
                 if (list.Count > 0 && list != null)
                 {
 
@@ -56,6 +56,7 @@ namespace MarvelApp.ViewModels
                 Characters.AddRange(Characters);
             }
         }
+        //Inspirado nessa implementação com adaptações https://www.c-sharpcorner.com/article/compute-sha256-hash-in-c-sharp/
         public string GetHash(string input)
         {
             using (var hash = MD5.Create())
