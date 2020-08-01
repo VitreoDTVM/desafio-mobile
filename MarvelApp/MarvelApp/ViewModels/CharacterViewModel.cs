@@ -15,14 +15,16 @@ namespace MarvelApp.ViewModels
     public class CharacterViewModel:BaseViewModel
     {
         private DataService dataService;
+        private NavigationService navigationService;
         private ObservableRangeCollection<Result> _heroes;
         private ObservableRangeCollection<Item> _items;
         private bool _Click = true;
         public Command<Result> GoToDetails { get; set; }
 
-        public CharacterViewModel(DataService dataService)
+        public CharacterViewModel(DataService dataService, NavigationService navigationService)
         {
             this.dataService = dataService;
+            this.navigationService = navigationService;
             Items = new ObservableRangeCollection<Item>();
             Heroes = new ObservableRangeCollection<Result>();
             GoToDetails = new Command<Result>(async (heroe) => await GoToHeroesDetails(heroe));
@@ -64,6 +66,7 @@ namespace MarvelApp.ViewModels
                 return;
             }
             IsClick = false;
+            await navigationService.NavigateOnView("CharacterDetailView");
 
             // await App.Current.MainPage.Navigation.PushModalAsync(new CharacterDetailView(item), true);
             //libera caso ele volte a página :)

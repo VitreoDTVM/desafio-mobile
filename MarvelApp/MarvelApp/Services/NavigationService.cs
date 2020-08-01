@@ -1,8 +1,11 @@
-﻿namespace MarvelApp.Services
+﻿using MarvelApp.Services;
+using Xamarin.Forms;
+
+[assembly: Dependency(typeof(NavigationService))]
+namespace MarvelApp.Services
 {
     using System.Threading.Tasks;
     using MarvelApp.Views;
-    using Xamarin.Forms;
 
     public class NavigationService
     {
@@ -19,8 +22,8 @@
         {
             switch (pageName)
             {
-                case "":
-                    //Details Page
+                case "CharacterDetailView":
+                     await Application.Current.MainPage.Navigation.PushModalAsync(new CharacterDetailView(), true);
                     break;
             }
         }

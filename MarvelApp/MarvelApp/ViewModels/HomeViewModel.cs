@@ -11,6 +11,7 @@ namespace MarvelApp.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         private DataService dataService;
+        private NavigationService navigationService;
         private CharacterViewModel characterViewModel;
         private FavoriteViewModel favoriteViewModel;
         private ObservableRangeCollection<AppPage> _pages;
@@ -19,10 +20,16 @@ namespace MarvelApp.ViewModels
         {
             return dataService = Xamarin.Forms.DependencyService.Get<DataService>();
         }
+        public NavigationService NavigationService()
+        {
+            return navigationService = Xamarin.Forms.DependencyService.Get<NavigationService>();
+
+        }
         public HomeViewModel()
         {
             dataService = new DataService();
-            characterViewModel = new CharacterViewModel(DataService());
+            navigationService = new NavigationService();
+            characterViewModel = new CharacterViewModel(DataService(), NavigationService());
             favoriteViewModel = new FavoriteViewModel(DataService());
             Pages = GetPages();
 
