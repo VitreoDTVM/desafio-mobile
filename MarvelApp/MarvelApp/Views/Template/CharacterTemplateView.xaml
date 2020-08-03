@@ -12,7 +12,7 @@
         <StackLayout Margin="0,70,0,0">
             <SearchBar x:Name="SearchView"
                 Placeholder="Buscar Personagens &#x1F50E;" 
-                Text="{Binding Filter, Mode=TwoWay}"
+                Text="{Binding ViewModel.Filter, Mode=TwoWay}"
                 TextColor="White" HorizontalOptions="Center"
                 PlaceholderColor="White" BackgroundColor="Black" 
                 CancelButtonColor="White"  

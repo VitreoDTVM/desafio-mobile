@@ -25,7 +25,8 @@ namespace MarvelApp.Views
         public HomeView()
         {
             InitializeComponent();
-            BindingContext = VM = new HomeViewModel();
+            VM = new HomeViewModel();
+            BindingContext = VM;
             SelectFirstItem();
         }
         private void SelectFirstItem()

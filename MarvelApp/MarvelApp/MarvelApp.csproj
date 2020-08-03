@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
+    <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Translations\" />
   </ItemGroup>
 
@@ -41,6 +42,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomeView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NoInternetView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SplashScreenView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Template\CharacterTemplateView.xaml">

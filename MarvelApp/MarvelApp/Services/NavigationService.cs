@@ -16,6 +16,12 @@ namespace MarvelApp.Services
                 case "HomeView":
                     Application.Current.MainPage = new NavigationPage(new HomeView());
                     break;
+                case "SplashScreenView":
+                    Application.Current.MainPage = new NavigationPage(new SplashScreenView());
+                    break;
+                case "NoInternetView":
+                    Application.Current.MainPage = new NavigationPage(new NoInternetView());
+                    break;
             }
         }
         public async Task NavigateOnView(string pageName)

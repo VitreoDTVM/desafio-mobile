@@ -18,6 +18,9 @@ namespace MarvelApp.ViewModels
         private NavigationService navigationService;
         private ObservableRangeCollection<Result> _heroes;
         private ObservableRangeCollection<Item> _items;
+        List<Result> heroes;
+
+
         private bool _Click = true;
         string _filter;
 
@@ -28,7 +31,8 @@ namespace MarvelApp.ViewModels
             this.dataService = dataService;
             this.navigationService = navigationService;
             Items = new ObservableRangeCollection<Item>();
-            Heroes = new ObservableRangeCollection<Result>();
+            heroes = new List<Result>();
+            Heroes = new ObservableRangeCollection<Result>(heroes.OrderBy(p => p.Name));
             GoToDetails = new Command<Result>(async (heroe) => await GoToHeroesDetails(heroe));
 
             IsClick = true;
@@ -63,6 +67,23 @@ namespace MarvelApp.ViewModels
             }
             set {
                 SetProperty(ref _filter, value);
+                Search(Filter);
+            }
+        }
+
+        private void Search(string filter)
+        {
+            if(filter.Length > 2 && filter != null)
+            {
+                Heroes = new ObservableRangeCollection<Result>(heroes
+                        .Where(c => c.Name.ToLower().Contains(filter.ToLower()))
+                        .OrderBy(c => c.Name));
+            }
+            else
+            {
+                Heroes = new ObservableRangeCollection<Result>(
+                heroes.OrderBy(p => p.Name));
+
             }
         }
 
@@ -97,7 +118,7 @@ namespace MarvelApp.ViewModels
                 }
                 else
                 {
-                    Heroes = new ObservableRangeCollection<Result>();
+                    Heroes = new ObservableRangeCollection<Result>(heroes.OrderBy(p => p.Name));
                     Heroes.AddRange(Heroes);
                 }
             }
