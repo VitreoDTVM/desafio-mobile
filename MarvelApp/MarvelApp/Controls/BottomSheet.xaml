@@ -4,10 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MarvelApp.Controls.BottomSheet">
-    <StackLayout>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
-  </StackLayout>
+             x:Class="MarvelApp.Controls.BottomSheet"
+             Margin="0,0,0,0" 
+             BackgroundColor="Gray" 
+             IsVisible="False"
+             CornerRadius="20" 
+             HeightRequest="300"
+             TranslationY="600">
 </Frame>

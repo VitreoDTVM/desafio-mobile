@@ -2,14 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:controls="clr-namespace:MarvelApp.Controls"
              mc:Ignorable="d"
+             BackgroundColor="#121212"
              x:Class="MarvelApp.Views.CharacterDetailView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Button Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="Center" HorizontalOptions="Center" Clicked="Button_Clicked"></Button>
+            <controls:BottomSheet x:Name="BottomSheetId" VerticalOptions="End" HorizontalOptions="FillAndExpand"></controls:BottomSheet>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
