@@ -13,6 +13,7 @@ using Xamarin.Forms.Xaml;
 
 namespace MarvelApp.Views.Template
 {
+    [DesignTimeVisible(true)]
     public partial class CharacterTemplateView : ContentView
     {
         public CharacterTemplateView()

@@ -4,10 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BackgroundColor="#121212"
              x:Class="MarvelApp.Views.Template.FavoriteTemplateView">
   <ContentView.Content>
-      <StackLayout>
-
+      <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="&#x1F914; OI " FontSize="Title" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"></Label>
       </StackLayout>
   </ContentView.Content>
 </ContentView>

@@ -11,19 +11,20 @@
   <ContentView.Content>
         <StackLayout Margin="0,70,0,0">
             <SearchBar x:Name="SearchView"
-                Placeholder="Buscar Personagens" 
+                Placeholder="Buscar Personagens &#x1F50E;" 
                 Text="{Binding Filter, Mode=TwoWay}"
                 TextColor="White" HorizontalOptions="Center"
                 PlaceholderColor="White" BackgroundColor="Black" 
-                CancelButtonColor="White"                  
+                CancelButtonColor="White"  
+                FontFamily="Regular"
                 SearchCommand="{Binding SearchCommand}"
                 IsVisible="True"></SearchBar>
             <CollectionView Margin="0,0,0,0" 
-                                    SelectionMode="None" 
+                            SelectionMode="None" 
                             Scrolled="Heroescollectionview_Scrolled"
-                                    x:Name="heroescollectionview" 
-                                    VerticalOptions="FillAndExpand"
-                                    ItemsSource="{Binding ViewModel.Heroes}">
+                            x:Name="heroescollectionview" 
+                            VerticalOptions="FillAndExpand"
+                            ItemsSource="{Binding ViewModel.Heroes}">
                 <CollectionView.EmptyView>
                     <Label
                         Padding="0,0,0,100"
@@ -74,7 +75,7 @@
                             </Grid>
 
                             <Label HorizontalTextAlignment="Center" 
-                                           TextColor="White" FontFamily="FontAwesomeBold" 
+                                           TextColor="White" FontFamily="Regular" 
                                            IsEnabled="{Binding IsClick}"
                                            Text="{Binding Name}" />
                         </StackLayout>

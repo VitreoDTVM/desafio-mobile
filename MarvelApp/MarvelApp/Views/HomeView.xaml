@@ -40,8 +40,9 @@
                         BackgroundColor="Transparent">
                         <Grid Margin="0,0,0,10" RowDefinitions="*" ColumnDefinitions="*,*,150,50,*">
                             <Image Grid.Column="2"
-                                Source="logotransparent" 
+                                Source="marvel_logo_white" 
                                    Aspect="Fill" 
+                                   HorizontalOptions="Center"
                                    HeightRequest="100" 
                                    WidthRequest="150" 
                                    VerticalOptions="Start" />
