@@ -56,17 +56,18 @@ namespace MarvelApp
 
                 if (e.NetworkAccess != NetworkAccess.Internet)
                 {
-                    await navigationService.NavigateOnView("NoInternetView");
+                     navigationService.SetMainView("HomeView");
                 }
                 else
                 {
                     try
                     {
-                        await navigationService.NavigateOnView("HomeView");
+                         navigationService.SetMainView("NoInternetView");
                     }
                     catch (Exception)
                     {
-                        await navigationService.NavigateOnView("AnErrorHasOccurredView");
+                        //bonus :)
+                         navigationService.SetMainView("AnErrorHasOccurredView");
                     }
                 }
             });

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MarvelApp.Models;
+using MarvelApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,9 +15,20 @@ namespace MarvelApp.Views
     [DesignTimeVisible(true)]
     public partial class CharacterDetailView : ContentPage
     {
-        public CharacterDetailView()
+        private CharacterDetailViewModel vm;
+
+        public CharacterDetailViewModel VM {
+            get => vm; set {
+                vm = value;
+            }
+        }
+
+
+        public CharacterDetailView(Result result)
         {
             InitializeComponent();
+            VM = new CharacterDetailViewModel(result);
+            BindingContext = VM;
         }
         bool IsBottomSheetVisible = false;
         private async void Button_Clicked(object sender, EventArgs e)

@@ -3,15 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:controls="clr-namespace:MarvelApp.Controls"
+             xmlns:controls="clr-namespace:MarvelApp.Controls" 
+             xmlns:cachedImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
              BackgroundColor="#121212"
              x:Class="MarvelApp.Views.CharacterDetailView">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Button Text="Welcome to Xamarin.Forms!"
+            <Button Text="Listar HQ's!"
                 VerticalOptions="Center" HorizontalOptions="Center" Clicked="Button_Clicked"></Button>
-            <controls:BottomSheet x:Name="BottomSheetId" VerticalOptions="End" HorizontalOptions="FillAndExpand"></controls:BottomSheet>
+            <controls:BottomSheet x:Name="BottomSheetId" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label VerticalOptions="Start" FontAttributes="Bold" FontSize="Title" HorizontalOptions="Center" TextColor="AliceBlue" Text="Lista de HQ's" />
+
+                    <CollectionView Margin="0,20,0,0"
+                               HeightRequest="30" 
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="Center"
+                               ItemsSource="{Binding Items}" 
+                                >
+                    <CollectionView.ItemsLayout>
+
+                        <GridItemsLayout
+                    Orientation="Horizontal"
+                    HorizontalItemSpacing="10"
+                    Span="1"
+                      />
+                    </CollectionView.ItemsLayout>
+                    <!--<CollectionView.Header>
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="AliceBlue" Text="Lista de HQ's" />
+                    </CollectionView.Header>-->
+                    <CollectionView.EmptyView>
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="AliceBlue" Text="Sem items para listar." />
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame  Padding="2"
+                                    CornerRadius="5"
+                                    BackgroundColor="Black">
+                                <Label Text="{Binding Name}" TextColor="White" FontSize="14"></Label>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                </StackLayout>
+            </controls:BottomSheet>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -96,7 +96,7 @@ namespace MarvelApp.ViewModels
             }
         }
 
-        private async Task GoToHeroesDetails(Result item)
+        private async Task GoToHeroesDetails(Result result)
         {
             //Trava duplo clique acidental :) 
             if (!IsClick)
@@ -105,7 +105,7 @@ namespace MarvelApp.ViewModels
                 return;
             }
             IsClick = false;
-            await navigationService.NavigateOnView("CharacterDetailView");
+            await navigationService.NavigateOnView("CharacterDetailView", result);
 
             // await App.Current.MainPage.Navigation.PushModalAsync(new CharacterDetailView(item), true);
             //libera caso ele volte a página :)

@@ -5,6 +5,7 @@ using Xamarin.Forms;
 namespace MarvelApp.Services
 {
     using System.Threading.Tasks;
+    using MarvelApp.Models;
     using MarvelApp.Views;
 
     public class NavigationService
@@ -24,12 +25,12 @@ namespace MarvelApp.Services
                     break;
             }
         }
-        public async Task NavigateOnView(string pageName)
+        public async Task NavigateOnView(string pageName, Result result)
         {
             switch (pageName)
             {
                 case "CharacterDetailView":
-                     await Application.Current.MainPage.Navigation.PushModalAsync(new CharacterDetailView(), true);
+                     await Application.Current.MainPage.Navigation.PushModalAsync(new CharacterDetailView(result), true);
                     break;
             }
         }
