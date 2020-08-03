@@ -1,4 +1,5 @@
-﻿using MarvelApp.Models;
+﻿using MarvelApp.DependencyServices;
+using MarvelApp.Models;
 using MarvelApp.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -89,8 +90,8 @@ namespace MarvelApp.Views
                 if (await DisplayAlert("Atenção!", "Você quer mesmo sair do aplicativo?", "Sim", "Não"))
                 {
                     base.OnBackButtonPressed();
-                    //var closeApplication = Xamarin.Forms.DependencyService.Get<ICloseApplication>();
-                    //if (closeApplication != null) closeApplication.CloseApp();
+                    var closeApplication = Xamarin.Forms.DependencyService.Get<ICloseApplication>();
+                    if (closeApplication != null) closeApplication.CloseApp();
                 }
             });
 
