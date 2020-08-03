@@ -1,4 +1,5 @@
-﻿using MarvelApp.Models;
+﻿using Acr.UserDialogs;
+using MarvelApp.Models;
 using MarvelApp.Services;
 using MarvelApp.Views.Template;
 using MvvmHelpers;
@@ -78,6 +79,14 @@ namespace MarvelApp.ViewModels
                 Heroes = new ObservableRangeCollection<Result>(heroes
                         .Where(c => c.Name.ToLower().Contains(filter.ToLower()))
                         .OrderBy(c => c.Name));
+            }else if(filter.Length == 2 && filter != null)
+            {
+                UserDialogs.Instance.Toast(new ToastConfig("É necessário digitar mais que 2 caracteres!")
+                    .SetBackgroundColor(System.Drawing.Color.DarkOrange)
+                    .SetMessageTextColor(System.Drawing.Color.White)
+                    .SetDuration(TimeSpan.FromSeconds(3))
+                    .SetPosition(ToastPosition.Bottom)
+                    );
             }
             else
             {
@@ -107,6 +116,8 @@ namespace MarvelApp.ViewModels
         {
             try
             {
+                UserDialogs.Instance.Loading("Estamos carregando os filmes, aguarde um instante..", null, null, true, MaskType.Gradient);
+
                 var guid = Guid.NewGuid().ToString();
                 var publickey = GetHash(guid + AppSettings.PrivateKey + AppSettings.PublicKey);
                 var endpoint = $"characters?apikey={AppSettings.PublicKey}&hash={publickey}&ts={guid}&limit=10&offset=1";
@@ -121,10 +132,13 @@ namespace MarvelApp.ViewModels
                     Heroes = new ObservableRangeCollection<Result>(heroes.OrderBy(p => p.Name));
                     Heroes.AddRange(Heroes);
                 }
+                UserDialogs.Instance.ShowLoading("Finalizando..", MaskType.Gradient);
+                UserDialogs.Instance.HideLoading();
             }
             catch (Exception exception)
             {
-
+                UserDialogs.Instance.ShowLoading("Finalizando..", MaskType.Gradient);
+                UserDialogs.Instance.HideLoading();
                 var properties = new Dictionary<string, string> { { "CharacterViewModel.cs", "InitializeAsync" } };
                 //Crashes.TrackError(exception, properties);
 

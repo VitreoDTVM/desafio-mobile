@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Content;
 using Android.Content.Res;
 using FFImageLoading.Forms.Platform;
+using Acr.UserDialogs;
+
 namespace MarvelApp.Droid
 {
     [Activity(Label = "Marvel", 
@@ -24,6 +26,7 @@ namespace MarvelApp.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            UserDialogs.Init(this);
 
             base.OnCreate(savedInstanceState);
             if (IsTablet(ApplicationContext))
