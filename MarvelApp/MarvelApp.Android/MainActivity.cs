@@ -39,9 +39,12 @@ namespace MarvelApp.Droid
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
             Window.AddFlags(WindowManagerFlags.Fullscreen);
-            CachedImageRenderer.Init(true);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            CachedImageRenderer.Init(true);
+
+            Xamarin.Forms.DependencyService.Register<DependencyServices.FileStore>();
+
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -65,6 +68,18 @@ namespace MarvelApp.Droid
                     break;
             }
             return tablet;
+        }
+        public override void OnTrimMemory(TrimMemory level)
+        {
+            FFImageLoading.ImageService.Instance.InvalidateMemoryCache();
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+            base.OnTrimMemory(level);
+        }
+        public override void OnLowMemory()
+        {
+            FFImageLoading.ImageService.Instance.InvalidateMemoryCache();
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+            base.OnLowMemory();
         }
     }
 }

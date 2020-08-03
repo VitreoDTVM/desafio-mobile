@@ -23,6 +23,8 @@ namespace MarvelApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.DependencyService.Register<DependencyServices.FileStore>();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

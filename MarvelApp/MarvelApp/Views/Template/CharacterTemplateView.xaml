@@ -10,12 +10,17 @@
              x:Class="MarvelApp.Views.Template.CharacterTemplateView">
   <ContentView.Content>
         <StackLayout Margin="0,70,0,0">
-            <Label Text="{x:Static fonts:Icon.Search}" 
-                                   FontSize="24" 
-                   HorizontalOptions="Center"
-                                   ></Label>
+            <SearchBar x:Name="SearchView"
+                Placeholder="Buscar Personagens" 
+                Text="{Binding Filter, Mode=TwoWay}"
+                TextColor="White" HorizontalOptions="Center"
+                PlaceholderColor="White" BackgroundColor="Black" 
+                CancelButtonColor="White"                  
+                SearchCommand="{Binding SearchCommand}"
+                IsVisible="True"></SearchBar>
             <CollectionView Margin="0,0,0,0" 
                                     SelectionMode="None" 
+                            Scrolled="Heroescollectionview_Scrolled"
                                     x:Name="heroescollectionview" 
                                     VerticalOptions="FillAndExpand"
                                     ItemsSource="{Binding ViewModel.Heroes}">

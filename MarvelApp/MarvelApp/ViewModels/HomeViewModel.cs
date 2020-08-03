@@ -49,7 +49,7 @@ namespace MarvelApp.ViewModels
                 new AppPage
                 {
                     Name = "PERSONAGENS",
-                    Icon = "menu_movie",
+                    Icon = "menu_heroe",
                     Type = AppPageType.Character,
                     ViewModel = characterViewModel
                 },

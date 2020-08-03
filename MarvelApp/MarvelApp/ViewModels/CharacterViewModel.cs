@@ -19,6 +19,8 @@ namespace MarvelApp.ViewModels
         private ObservableRangeCollection<Result> _heroes;
         private ObservableRangeCollection<Item> _items;
         private bool _Click = true;
+        string _filter;
+
         public Command<Result> GoToDetails { get; set; }
 
         public CharacterViewModel(DataService dataService, NavigationService navigationService)
@@ -55,7 +57,14 @@ namespace MarvelApp.ViewModels
                 SetProperty(ref _Click, value);
             }
         }
-
+        public string Filter {
+            get {
+                return _filter;
+            }
+            set {
+                SetProperty(ref _filter, value);
+            }
+        }
 
         private async Task GoToHeroesDetails(Result item)
         {
@@ -79,7 +88,6 @@ namespace MarvelApp.ViewModels
             {
                 var guid = Guid.NewGuid().ToString();
                 var publickey = GetHash(guid + AppSettings.PrivateKey + AppSettings.PublicKey);
-                var privatekey = GetHash(AppSettings.PrivateKey);
                 var endpoint = $"characters?apikey={AppSettings.PublicKey}&hash={publickey}&ts={guid}&limit=10&offset=1";
                 var response = await dataService.GetAsync<Character>(endpoint, "character", 100);
                 var list = (List<Models.Result>)response.Result;
