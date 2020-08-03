@@ -6,13 +6,26 @@
              xmlns:controls="clr-namespace:MarvelApp.Controls" 
              xmlns:cachedImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
+             BackgroundImageSource="{Binding ImagePath}"
              BackgroundColor="#121212"
              x:Class="MarvelApp.Views.CharacterDetailView">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Button Text="Listar HQ's!"
-                VerticalOptions="Center" HorizontalOptions="Center" Clicked="Button_Clicked"></Button>
-            <controls:BottomSheet x:Name="BottomSheetId" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+        <Grid  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout>
+                <Grid RowDefinitions="30" ColumnDefinitions="*,*,*">
+            <Frame Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="20" CornerRadius="10" Padding="2">
+                <Label Text="Listar HQ's!"
+                VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Button_Clicked"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+            </Frame>
+                    <Image Grid.Row="0" Grid.Column="2" Source="menu_heart_select.png">
+                        </Image>
+                </Grid>
+                <Label Text="{Binding Name}" BackgroundColor="AliceBlue" FontSize="Title" HeightRequest="30" VerticalOptions="Start"></Label>
+            <Label Text="{Binding Description}" BackgroundColor="AliceBlue" FontSize="12" HeightRequest="50" MaxLines="2" VerticalOptions="Start"></Label>
+            <controls:BottomSheet Margin="0,0,0,20" x:Name="BottomSheetId" VerticalOptions="End" HorizontalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <Label VerticalOptions="Start" FontAttributes="Bold" FontSize="Title" HorizontalOptions="Center" TextColor="AliceBlue" Text="Lista de HQ's" />
 
@@ -48,6 +61,8 @@
                 </CollectionView>
                 </StackLayout>
             </controls:BottomSheet>
+        
         </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
