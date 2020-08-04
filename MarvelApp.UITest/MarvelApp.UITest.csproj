@@ -37,10 +37,6 @@
       <Project>{2389861b-f074-4e91-bd6d-51aee5c55cd8}</Project>
       <Name>MarvelApp.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MarvelApp\MarvelApp.iOS\MarvelApp.iOS.csproj">
-      <Project>{6a8d2c1e-a4b8-470c-b2b4-069c5134c65a}</Project>
-      <Name>MarvelApp.iOS</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests.cs" />

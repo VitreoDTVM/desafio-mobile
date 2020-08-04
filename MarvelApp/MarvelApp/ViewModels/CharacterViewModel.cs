@@ -24,11 +24,14 @@ namespace MarvelApp.ViewModels
 
         private bool _Click = true;
         string _filter;
+        private string _message;
 
         public Command<Result> GoToDetails { get; set; }
 
         public CharacterViewModel(DataService dataService, NavigationService navigationService)
         {
+            Message = "CARREGANDO OS PERONAGENS..";
+
             this.dataService = dataService;
             this.navigationService = navigationService;
             Items = new ObservableRangeCollection<Item>();
@@ -71,6 +74,14 @@ namespace MarvelApp.ViewModels
                 Search(Filter);
             }
         }
+        public string Message {
+            get {
+                return _message;
+            }
+            set {
+                SetProperty(ref _message, value);
+            }
+        }
 
         private void Search(string filter)
         {
@@ -79,7 +90,10 @@ namespace MarvelApp.ViewModels
                 Heroes = new ObservableRangeCollection<Result>(heroes
                         .Where(c => c.Name.ToLower().Contains(filter.ToLower()))
                         .OrderBy(c => c.Name));
-            }else if(filter.Length == 2 && filter != null)
+                if (Heroes.Count == 0)
+                    Message = "NENHUM PERSONAGEM FOI ENCONTRADO";
+            }
+            else if(filter.Length == 2 && filter != null)
             {
                 UserDialogs.Instance.Toast(new ToastConfig("É necessário digitar mais que 2 caracteres!")
                     .SetBackgroundColor(System.Drawing.Color.DarkOrange)
@@ -88,7 +102,7 @@ namespace MarvelApp.ViewModels
                     .SetPosition(ToastPosition.Bottom)
                     );
             }
-            else
+            else if(string.IsNullOrEmpty(filter))
             {
                 Heroes = new ObservableRangeCollection<Result>(
                 heroes.OrderBy(p => p.Name));
@@ -126,11 +140,17 @@ namespace MarvelApp.ViewModels
                 if (list.Count > 0 && list != null)
                 {
                     Heroes.AddRange(list);
+                    foreach (var item in list)
+                    {
+                        heroes.Add(item);
+                    }
                 }
                 else
                 {
                     Heroes = new ObservableRangeCollection<Result>(heroes.OrderBy(p => p.Name));
                     Heroes.AddRange(Heroes);
+                    Message = "NENHUM PERSONAGEM FOI CARREGADO";
+
                 }
                 UserDialogs.Instance.ShowLoading("Finalizando..", MaskType.Gradient);
                 UserDialogs.Instance.HideLoading();

@@ -10,7 +10,7 @@ namespace MarvelApp.UITest
         {
             if (platform == Platform.Android)
             {
-                return ConfigureApp.Android.StartApp();
+                return ConfigureApp.Android.ApkFile(@"C:/Users/ANDERSON/Source/Repos/desafio-mobile/MarvelApp/MarvelApp.Android/bin/Debug/com.companyname.marvelapp-Signed.apk").EnableLocalScreenshots().StartApp();
             }
 
             return ConfigureApp.iOS.StartApp();

@@ -30,7 +30,7 @@
                         Padding="0,0,0,100"
                         FontSize="Title"
                         HorizontalTextAlignment="Center"
-                        Text="VOCÊ AINDA NÃO ADICIONOU FAVORITOS :("
+                        Text="{Binding ViewModel.Message}"
                         TextColor="#7B7B7C"
                         VerticalTextAlignment="Center" />
                 </CollectionView.EmptyView>
@@ -59,7 +59,7 @@
                                                                 Aspect="Fill"
                                                                 AutomationId="ImagePath"
                                                                 HorizontalOptions="FillAndExpand"
-                                                                LoadingPlaceholder="{OnIdiom Phone='imageplaceholder', Tablet='imageplaceholdertablet'}" 
+                                                                LoadingPlaceholder="{OnIdiom Phone='placeholderimage'}" 
                                                                 LoadingDelay="3" 
                                                                 HeightRequest="{OnIdiom Tablet=400}"
                                                                 WidthRequest="{OnIdiom Phone=200, Tablet=500}"

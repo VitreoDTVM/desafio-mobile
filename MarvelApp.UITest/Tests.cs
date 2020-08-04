@@ -25,9 +25,11 @@ namespace MarvelApp.UITest
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
+            
         }
 
         [Test]
+        [Category("Campo de buscas")]
         public void WelcomeTextIsDisplayed()
         {
             // app.WaitForNoElement("heroescollectionview","", TimeSpan.FromSeconds(20));
@@ -40,10 +42,12 @@ namespace MarvelApp.UITest
 
 
         }
+        //[Test]
+        //[Category("Scroll Collection View")]
 
         public void IndexCollectionView(int Position)
         {
-            app.ScrollDownTo(Position.ToString(), "", ScrollStrategy.Gesture, 0.67, 500, true, TimeSpan.FromSeconds(10000));
+            app.ScrollDownTo(Position.ToString(), "", ScrollStrategy.Gesture, 0.67, 500, true, TimeSpan.FromSeconds(10000));            
             //app.ScrollTo(heroescollectionview);
         }
         [Test]
@@ -63,12 +67,14 @@ namespace MarvelApp.UITest
             app.Screenshot("View Anterior");
         }
         [Test]
+        [Category("Nova funcionalidade")]
         public void ScreenLandscape()
         {
             app.SetOrientationLandscape();
             app.Screenshot("Tela na Horizontal");
         }
         [Test]
+        [Category("Nova funcionalidade")]
         public void ScreenPortrait()
         {
             app.SetOrientationPortrait();

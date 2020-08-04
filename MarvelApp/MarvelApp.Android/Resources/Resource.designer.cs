@@ -11025,16 +11025,19 @@ namespace MarvelApp.Droid
 			public const int notify_panel_notification_icon_bg = 2131165309;
 			
 			// aapt resource value: 0x7F07007E
-			public const int roundedbg = 2131165310;
+			public const int placeholderimage = 2131165310;
 			
 			// aapt resource value: 0x7F07007F
-			public const int roundedbgdark = 2131165311;
+			public const int roundedbg = 2131165311;
 			
 			// aapt resource value: 0x7F070080
-			public const int tooltip_frame_dark = 2131165312;
+			public const int roundedbgdark = 2131165312;
 			
 			// aapt resource value: 0x7F070081
-			public const int tooltip_frame_light = 2131165313;
+			public const int tooltip_frame_dark = 2131165313;
+			
+			// aapt resource value: 0x7F070082
+			public const int tooltip_frame_light = 2131165314;
 			
 			static Drawable()
 			{
