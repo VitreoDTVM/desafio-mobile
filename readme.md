@@ -43,14 +43,14 @@
 
 ## Sobre o desenvolvimento do projeto
 
-Animações de transição (implementado na navegação de página).
-Animações (implementado bottomsheet e lupa ao fazer scroll na lista).
-Controle de cache (implementado na listagem de imagens).
-Iconização diferente do padrão xamarin (implementado em dois icones no projeto no restante) e RoundIcon (android 7.1+) definido.
-Faça uso de boas práticas de desenvolvimento (Implementado o MVVM e boas práticas para o c#).
-Uma splashscreen customizada semelhante para Android e iOS (implementado e com uma animação pulse ao abrir o app).
-Campo de busca em tempo real adicionado com um toast notification adicionado.
-Adicionado uma página para listar favoritos salvos no sqlite (assincrono).
+- Animações de transição (implementado na navegação de página).
+- Animações (implementado bottomsheet e lupa ao fazer scroll na lista).
+- Controle de cache (implementado na listagem de imagens).
+- Iconização diferente do padrão xamarin (implementado em dois icones no projeto no restante) e RoundIcon (android 7.1+) definido.
+- Faça uso de boas práticas de desenvolvimento (Implementado o MVVM e boas práticas para o c#).
+- Uma splashscreen customizada semelhante para Android e iOS (implementado e com uma animação pulse ao abrir o app).
+- Campo de busca em tempo real adicionado com um toast notification adicionado.
+- Adicionado uma página para listar favoritos salvos no sqlite (assincrono).
 
 
 
