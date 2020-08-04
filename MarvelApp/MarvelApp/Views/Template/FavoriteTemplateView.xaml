@@ -53,7 +53,7 @@
                                                                 HeightRequest="{OnIdiom Tablet=400}"
                                                                 WidthRequest="{OnIdiom Phone=200, Tablet=500}"
                                                                 LoadingPriority="High"
-                                                                Source="{Binding Thumbnail.ImagePath}">
+                                                                Source="{Binding ImagePath}">
                                         <ffimageloading:CachedImage.GestureRecognizers>
                                             <TapGestureRecognizer 
                                                                   NumberOfTapsRequired="1" 

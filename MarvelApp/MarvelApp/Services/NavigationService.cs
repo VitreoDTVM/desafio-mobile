@@ -1,14 +1,15 @@
-﻿using MarvelApp.Services;
+﻿using System.Threading.Tasks;
+using MarvelApp.Models;
+using MarvelApp.Views;
+using MarvelApp.Services;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(NavigationService))]
 namespace MarvelApp.Services
 {
-    using System.Threading.Tasks;
-    using MarvelApp.Models;
-    using MarvelApp.Views;
 
-    public class NavigationService
+
+    public sealed class NavigationService
     {
         public void SetMainView(string pageName)
         {

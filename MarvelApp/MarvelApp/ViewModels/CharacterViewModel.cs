@@ -15,32 +15,17 @@ namespace MarvelApp.ViewModels
 {
     public class CharacterViewModel:BaseViewModel
     {
+        #region Attributes
         private DataService dataService;
         private NavigationService navigationService;
         private ObservableRangeCollection<Result> _heroes;
         private ObservableRangeCollection<Item> _items;
         List<Result> heroes;
-
-
         private bool _Click = true;
         string _filter;
         private string _message;
-
-        public Command<Result> GoToDetails { get; set; }
-
-        public CharacterViewModel(DataService dataService, NavigationService navigationService)
-        {
-            Message = "CARREGANDO OS PERONAGENS..";
-
-            this.dataService = dataService;
-            this.navigationService = navigationService;
-            Items = new ObservableRangeCollection<Item>();
-            heroes = new List<Result>();
-            Heroes = new ObservableRangeCollection<Result>(heroes.OrderBy(p => p.Name));
-            GoToDetails = new Command<Result>(async (heroe) => await GoToHeroesDetails(heroe));
-
-            IsClick = true;
-        }
+        #endregion
+        #region Properties
         public ObservableRangeCollection<Result> Heroes {
             get {
                 return _heroes;
@@ -82,10 +67,30 @@ namespace MarvelApp.ViewModels
                 SetProperty(ref _message, value);
             }
         }
+        #endregion
+        #region Commands
+        public Command<Result> GoToDetails { get; set; }
 
+        #endregion
+        #region Constructors
+        public CharacterViewModel(DataService dataService, NavigationService navigationService)
+        {
+            Message = "CARREGANDO OS PERSONAGENS..";
+
+            this.dataService = dataService;
+            this.navigationService = navigationService;
+            Items = new ObservableRangeCollection<Item>();
+            heroes = new List<Result>();
+            Heroes = new ObservableRangeCollection<Result>(heroes.OrderBy(p => p.Name));
+            GoToDetails = new Command<Result>(async (heroe) => await GoToHeroesDetails(heroe));
+
+            IsClick = true;
+        } 
+        #endregion    
+        #region Methods
         private void Search(string filter)
         {
-            if(filter.Length > 2 && filter != null)
+            if (filter.Length > 2 && filter != null)
             {
                 Heroes = new ObservableRangeCollection<Result>(heroes
                         .Where(c => c.Name.ToLower().Contains(filter.ToLower()))
@@ -93,7 +98,7 @@ namespace MarvelApp.ViewModels
                 if (Heroes.Count == 0)
                     Message = "NENHUM PERSONAGEM FOI ENCONTRADO";
             }
-            else if(filter.Length == 2 && filter != null)
+            else if (filter.Length == 2 && filter != null)
             {
                 UserDialogs.Instance.Toast(new ToastConfig("É necessário digitar mais que 2 caracteres!")
                     .SetBackgroundColor(System.Drawing.Color.DarkOrange)
@@ -102,7 +107,7 @@ namespace MarvelApp.ViewModels
                     .SetPosition(ToastPosition.Bottom)
                     );
             }
-            else if(string.IsNullOrEmpty(filter))
+            else if (string.IsNullOrEmpty(filter))
             {
                 Heroes = new ObservableRangeCollection<Result>(
                 heroes.OrderBy(p => p.Name));
@@ -182,6 +187,7 @@ namespace MarvelApp.ViewModels
 
                 return strBuilder.ToString();
             }
-        }
+        } 
+        #endregion
     }
 }

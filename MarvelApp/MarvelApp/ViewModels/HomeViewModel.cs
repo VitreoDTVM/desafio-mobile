@@ -1,52 +1,24 @@
-﻿using MarvelApp.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MarvelApp.Models;
 using MarvelApp.Services;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using MvvmHelpers.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace MarvelApp.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
+        #region Attributes
         private DataService dataService;
         private NavigationService navigationService;
         private CharacterViewModel characterViewModel;
         private FavoriteViewModel favoriteViewModel;
         private ObservableRangeCollection<AppPage> _pages;
         private bool _isBusy;
-
-        public IAsyncCommand ReloadFavorites { get; private set; }
-
-        public DataService DataService()
-        {
-            return dataService = Xamarin.Forms.DependencyService.Get<DataService>();
-        }
-        public NavigationService NavigationService()
-        {
-            return navigationService = Xamarin.Forms.DependencyService.Get<NavigationService>();
-
-        }
-        public HomeViewModel()
-        {
-            dataService = new DataService();
-            navigationService = new NavigationService();
-            characterViewModel = new CharacterViewModel(DataService(), NavigationService());
-            favoriteViewModel = new FavoriteViewModel(DataService());
-            ReloadFavorites = new AsyncCommand(LoadFavorites, CanExecuteSubmit);
-
-            Pages = GetPages();
-
-        }
-
-        public async Task LoadFavorites()
-        {
-            await favoriteViewModel.LoadFavorites();
-        }
-
+        #endregion
+        #region Properties
         public ObservableRangeCollection<AppPage> Pages {
             get {
                 return _pages;
@@ -79,6 +51,39 @@ namespace MarvelApp.ViewModels
                 }
             };
         }
+        #endregion
+        #region Commands
+        public IAsyncCommand ReloadFavorites { get; private set; }
+
+        #endregion
+        #region Singleton
+        public DataService DataService()
+        {
+            return dataService = Xamarin.Forms.DependencyService.Get<DataService>();
+        }
+        public NavigationService NavigationService()
+        {
+            return navigationService = Xamarin.Forms.DependencyService.Get<NavigationService>();
+
+        } 
+        #endregion
+        #region Constructors
+        public HomeViewModel()
+        {
+            dataService = new DataService();
+            navigationService = new NavigationService();
+            characterViewModel = new CharacterViewModel(DataService(), NavigationService());
+            favoriteViewModel = new FavoriteViewModel(DataService());
+            ReloadFavorites = new AsyncCommand(LoadFavorites, CanExecuteSubmit);
+            Pages = GetPages();
+        }
+
+        #endregion
+        #region Methods
+        public async Task LoadFavorites()
+        {
+            await favoriteViewModel.LoadFavorites();
+        }
         private async Task ExecuteSubmitAsync()
         {
             try
@@ -87,7 +92,7 @@ namespace MarvelApp.ViewModels
             }
             catch (Exception exception)
             {
-       
+
                 var properties = new Dictionary<string, string> {
     { "HomeViewModel.cs", "ExecuteSubmitAsync"}};
                 //Crashes.TrackError(exception, properties);
@@ -102,6 +107,7 @@ namespace MarvelApp.ViewModels
         public bool CanExecuteSubmit(object tr)
         {
             return !IsBusy;
-        }
+        } 
+        #endregion
     }
 }

@@ -1,22 +1,23 @@
-﻿using MarvelApp.Models;
-using MarvelApp.Services;
-using MvvmHelpers;
-using MvvmHelpers.Commands;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
+using MarvelApp.Models;
+using MarvelApp.Services;
+using MvvmHelpers;
+using MvvmHelpers.Commands;
 namespace MarvelApp.ViewModels
 {
     public class FavoriteViewModel : BaseViewModel
     {
+        #region Attributes
         private DataService dataService;
         private ObservableRangeCollection<Result> _favorite;
         private bool _Click;
         private string _message;
-
+        #endregion
+        #region Properties
         public ObservableRangeCollection<Result> Favorites {
             get {
                 return _favorite;
@@ -41,8 +42,12 @@ namespace MarvelApp.ViewModels
                 SetProperty(ref _message, value);
             }
         }
+        #endregion
+        #region Commands
         public Command<Result> GoToDetails { get; set; }
 
+        #endregion
+        #region Constructors
         public FavoriteViewModel(DataService dataService)
         {
             Message = "CARREGANDO OS PERONAGENS..";
@@ -52,6 +57,8 @@ namespace MarvelApp.ViewModels
             Favorites = new ObservableRangeCollection<Result>();
 
         }
+        #endregion
+        #region Methods
         public async Task LoadFavorites()
         {
             try
@@ -102,7 +109,8 @@ namespace MarvelApp.ViewModels
             //
             IsClick = true;
 
-        }
+        } 
+        #endregion
     }
 }
     

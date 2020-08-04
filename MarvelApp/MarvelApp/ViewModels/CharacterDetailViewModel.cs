@@ -1,21 +1,24 @@
-﻿using MarvelApp.Models;
-using MvvmHelpers;
-using MvvmHelpers.Commands;
+﻿
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-
+using MarvelApp.Models;
+using MvvmHelpers;
+using MvvmHelpers.Commands;
 namespace MarvelApp.ViewModels
 {
     public class CharacterDetailViewModel : BaseViewModel
     {
+        #region Attributes
         private ObservableRangeCollection<Item> _items;
         private string _IconFavoriteValue;
+        Result result;
 
         public string ImagePath { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        #endregion
+        #region Properties
         public ObservableRangeCollection<Item> Items {
             get {
                 return _items;
@@ -31,9 +34,13 @@ namespace MarvelApp.ViewModels
             set {
                 SetProperty(ref _IconFavoriteValue, value);
             }
-        }
+        } 
+        #endregion
+        #region Commands
         public Command GoToFavorite { get; private set; }
-        Result result;
+
+        #endregion
+        #region Constructors
         public CharacterDetailViewModel(Result result)
         {
             Items = new ObservableRangeCollection<Item>();
@@ -44,7 +51,9 @@ namespace MarvelApp.ViewModels
             Items.AddRange(result.Comics.Items);
             GoToFavorite = new Command(async () => { await Favorite(); });
             _ = UpdateIconFavorite();
-        }
+        } 
+        #endregion
+        #region Methods
         public async Task<bool> UpdateIconFavorite()
         {
             var listfavorite = await App.Database.CheckFavorite(this.result.Id);
@@ -93,8 +102,9 @@ namespace MarvelApp.ViewModels
             {
                 var properties = new Dictionary<string, string> {
                                     { "CharacterDetailViewModel.cs", "Favorite" }};
-               // Crashes.TrackError(exception, properties);
+                // Crashes.TrackError(exception, properties);
             }
         }
+        #endregion
     }
 }

@@ -1,22 +1,21 @@
-﻿using MarvelApp.Services;
+﻿
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using MarvelApp.Services;
 using Xamarin.Forms;
+using MarvelApp.Models;
+using MonkeyCache;
+using MonkeyCache.SQLite;
+using Newtonsoft.Json;
+using Xamarin.Essentials;
 [assembly: Dependency(typeof(DataService))]
+
 namespace MarvelApp.Services
 {
-    using MarvelApp.Models;
-    using MonkeyCache;
-    using MonkeyCache.SQLite;
-    using Newtonsoft.Json;
-    using System;
-	using System.Collections.Generic;
-    using System.Net;
-    using System.Net.Http;
-    using System.Security.Cryptography;
-	using System.Text;
-    using System.Threading.Tasks;
-    using Xamarin.Essentials;
-
-    public class DataService
+    public sealed class DataService
     {
 		public class HttpResponseException : Exception
 		{
