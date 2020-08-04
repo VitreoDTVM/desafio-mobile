@@ -10,7 +10,7 @@
              x:Class="MarvelApp.Views.Template.CharacterTemplateView">
   <ContentView.Content>
         <StackLayout Margin="0,70,0,0">
-            <SearchBar x:Name="SearchView"
+            <SearchBar x:Name="SearchView" AutomationId="SearchView"
                 Placeholder="Buscar Personagens &#x1F50E;" 
                 Text="{Binding ViewModel.Filter, Mode=TwoWay}"
                 TextColor="White" HorizontalOptions="Center"
@@ -56,14 +56,15 @@
                                        CornerRadius="10" 
                                        BackgroundColor="Transparent">
                                     <ffimageloading:CachedImage IsEnabled="{Binding ViewModel.IsClick}" 
-                                                                        Aspect="Fill" 
-                                                                        HorizontalOptions="FillAndExpand"
-                                                                        LoadingPlaceholder="{OnIdiom Phone='imageplaceholder', Tablet='imageplaceholdertablet'}" 
-                                                                        LoadingDelay="3" 
-                                                                        HeightRequest="{OnIdiom Tablet=400}"
-                                                                        WidthRequest="{OnIdiom Phone=200, Tablet=500}"
-                                                                        LoadingPriority="High"
-                                                                        Source="{Binding Thumbnail.ImagePath}">
+                                                                Aspect="Fill"
+                                                                AutomationId="ImagePath"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                LoadingPlaceholder="{OnIdiom Phone='imageplaceholder', Tablet='imageplaceholdertablet'}" 
+                                                                LoadingDelay="3" 
+                                                                HeightRequest="{OnIdiom Tablet=400}"
+                                                                WidthRequest="{OnIdiom Phone=200, Tablet=500}"
+                                                                LoadingPriority="High"
+                                                                Source="{Binding Thumbnail.ImagePath}">
                                         <ffimageloading:CachedImage.GestureRecognizers>
                                             <TapGestureRecognizer 
                                                                   NumberOfTapsRequired="1" 
