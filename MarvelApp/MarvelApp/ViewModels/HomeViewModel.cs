@@ -1,6 +1,8 @@
 ﻿using MarvelApp.Models;
 using MarvelApp.Services;
 using MvvmHelpers;
+using MvvmHelpers.Commands;
+using MvvmHelpers.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,6 +17,9 @@ namespace MarvelApp.ViewModels
         private CharacterViewModel characterViewModel;
         private FavoriteViewModel favoriteViewModel;
         private ObservableRangeCollection<AppPage> _pages;
+        private bool _isBusy;
+
+        public IAsyncCommand ReloadFavorites { get; private set; }
 
         public DataService DataService()
         {
@@ -31,9 +36,17 @@ namespace MarvelApp.ViewModels
             navigationService = new NavigationService();
             characterViewModel = new CharacterViewModel(DataService(), NavigationService());
             favoriteViewModel = new FavoriteViewModel(DataService());
+            ReloadFavorites = new AsyncCommand(LoadFavorites, CanExecuteSubmit);
+
             Pages = GetPages();
 
         }
+
+        public async Task LoadFavorites()
+        {
+            await favoriteViewModel.LoadFavorites();
+        }
+
         public ObservableRangeCollection<AppPage> Pages {
             get {
                 return _pages;
@@ -41,6 +54,10 @@ namespace MarvelApp.ViewModels
             set {
                 SetProperty(ref _pages, value);
             }
+        }
+        public new bool IsBusy {
+            get => _isBusy;
+            private set => SetProperty(ref _isBusy, value);
         }
         private ObservableRangeCollection<AppPage> GetPages()
         {
@@ -80,6 +97,11 @@ namespace MarvelApp.ViewModels
 "OK");
             }
 
+        }
+
+        public bool CanExecuteSubmit(object tr)
+        {
+            return !IsBusy;
         }
     }
 }

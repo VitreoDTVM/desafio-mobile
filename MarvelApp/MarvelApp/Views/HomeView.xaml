@@ -38,7 +38,14 @@
                         AbsoluteLayout.LayoutBounds="0,0,1,70"
                         AbsoluteLayout.LayoutFlags="WidthProportional"
                         BackgroundColor="Transparent">
-                        <Grid Margin="0,0,0,10" RowDefinitions="*" ColumnDefinitions="*,*,150,50,*">
+                        <Image 
+                                
+                                   Aspect="Fill" 
+                                   HorizontalOptions="Center"
+                                   HeightRequest="100" 
+                                   WidthRequest="100" 
+                                   VerticalOptions="Start" />
+                        <Grid Margin="0,0,0,10" RowDefinitions="*" ColumnDefinitions="*,*,150,*,*">
                             <Image Grid.Column="2"
                                 Source="marvel_logo_white" 
                                    Aspect="Fill" 
@@ -46,17 +53,6 @@
                                    HeightRequest="100" 
                                    WidthRequest="150" 
                                    VerticalOptions="Start" />
-                            <cachedImage:CachedImage Aspect="AspectFill"
-                                                     Grid.Column="4"                                                              
-                                                     VerticalOptions="Center"
-                                                     x:Name="title_search" 
-                                                     Source="search" 
-                                                     Style="{StaticResource TitleImage}">
-                                <cachedImage:CachedImage.GestureRecognizers>
-                                    <TapGestureRecognizer>
-                                    </TapGestureRecognizer>
-                                </cachedImage:CachedImage.GestureRecognizers>
-                            </cachedImage:CachedImage>
                         </Grid>
                     </FlexLayout>
                 </OnIdiom.Phone>

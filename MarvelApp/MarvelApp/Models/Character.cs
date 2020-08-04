@@ -22,6 +22,7 @@ namespace MarvelApp.Models
 
                 return string.Format($"{Path.Replace("http","https")}{"."}{Extension}");
             }
+            set { }
         }
     }
 

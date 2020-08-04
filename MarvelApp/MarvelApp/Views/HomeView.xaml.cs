@@ -39,19 +39,7 @@ namespace MarvelApp.Views
         void CarouselView_CurrentItemChanged(System.Object sender, Xamarin.Forms.CurrentItemChangedEventArgs e)
         {
             if (e.CurrentItem is AppPage currentItem)
-            {
-                if (currentItem.Name != "CHARACTER")
-                {
-                    title_search.IsVisible = false;
-                    title_search.IsEnabled = false;
-                }
-                else
-                {
-                    title_search.IsVisible = true;
-                    title_search.IsEnabled = true;
-                }
-
-
+            {               
                 var currentPageIndex = VM.Pages.IndexOf(currentItem);
                 if (Footer.Children[currentPageIndex] is StackLayout stackLayout)
                     ChangeState(stackLayout, "Selected");
@@ -99,11 +87,16 @@ namespace MarvelApp.Views
         }
         bool started = false;
         int update = 0;
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             try
             {
-              
+                if (AppSettings.NewFavoriteAdd)
+                {
+                    await VM.LoadFavorites();
+                    AppSettings.NewFavoriteAdd = false;
+
+                }
 
 
             }

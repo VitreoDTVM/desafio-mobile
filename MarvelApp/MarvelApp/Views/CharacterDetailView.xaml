@@ -20,11 +20,14 @@
                     <TapGestureRecognizer Tapped="Button_Clicked"></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
             </Frame>
-                    <Image Grid.Row="0" Grid.Column="2" Source="menu_heart_select.png">
+                    <Image Grid.Row="0" Grid.Column="2" Source="{Binding IconFavoriteValue}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToFavorite}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                         </Image>
                 </Grid>
-                <Label Text="{Binding Name}" BackgroundColor="AliceBlue" FontSize="Title" HeightRequest="30" VerticalOptions="Start"></Label>
-            <Label Text="{Binding Description}" BackgroundColor="AliceBlue" FontSize="12" HeightRequest="50" MaxLines="2" VerticalOptions="Start"></Label>
+                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" FontSize="Title" HeightRequest="30" VerticalOptions="Start"></Label>
+            <Label Text="{Binding Description}"   FontSize="12" HeightRequest="50" MaxLines="2" VerticalOptions="Start"></Label>
             <controls:BottomSheet Margin="0,0,0,20" x:Name="BottomSheetId" VerticalOptions="End" HorizontalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <Label VerticalOptions="Start" FontAttributes="Bold" FontSize="Title" HorizontalOptions="Center" TextColor="AliceBlue" Text="Lista de HQ's" />
