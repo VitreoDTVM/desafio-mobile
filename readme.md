@@ -57,5 +57,5 @@
 ## Sobre o designer do projeto
 
 Um bom designer foi proposto por Karen Wandekochen e, mas a execução, não seria completamente possível em tempo hábil, sendo assim, houve desvios de minha parte em relação a arte.
-Designer: 
+Designer: https://www.figma.com/proto/lB1Atpn3wb4cSW1yCJeIcQ/Untitled?node-id=0%3A1&scaling=scale-down
 
