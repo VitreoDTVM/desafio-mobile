@@ -474,3 +474,6 @@ C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\android\assets\Newtonsoft.Json.dll
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\android\assets\Microsoft.CSharp.dll
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\android\assets\Microsoft.CSharp.pdb
