@@ -5,7 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="VitreoMobile.ListarPersonagens">
-        <ListView ItemsSource="{Binding Personagem}"
+    <StackLayout Padding="10,0,10,0">
+        <SearchBar TextChanged="SearchBar_TextChanged" ></SearchBar>
+        <!--<ActivityIndicator IsRunning="{Binding Aguarde}" IsVisible="{Binding Aguarde}" >
+        </ActivityIndicator>-->
+        <ListView x:Name="ListPersonagem" ItemsSource="{Binding Personagem}"
+                  ItemTapped="ListPersonagem_ItemTapped"
           HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -36,4 +41,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+    </StackLayout>
 </ContentPage>

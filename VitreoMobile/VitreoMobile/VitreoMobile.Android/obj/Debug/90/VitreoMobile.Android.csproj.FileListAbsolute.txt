@@ -477,3 +477,7 @@ C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\android\assets\Newtonsoft.Json.dll
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\android\assets\Microsoft.CSharp.dll
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\android\assets\Microsoft.CSharp.pdb
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\res\drawable\splash_screen.xml
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\res\drawable\styles.xml
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\android\src\crc648b4cc7b84a808fcd\SplashActivity.java
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\res\drawable\marvel.bmp

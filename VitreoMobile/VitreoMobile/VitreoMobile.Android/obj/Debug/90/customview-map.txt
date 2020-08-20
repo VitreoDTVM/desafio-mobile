@@ -19,7 +19,9 @@ android.support.v7.widget.Toolbar;C:\Users\yrvin\Documents\estudo\Vitreo\desafio
 android.support.v7.widget.Toolbar;obj\Debug\90\res\layout\toolbar.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
+bitmap;obj\Debug\90\res\drawable\splash_screen.xml
 cache-path;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+color;obj\Debug\90\res\drawable\splash_screen.xml
 color;obj\Debug\90\res\values\colors.xml
 external-cache-path;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
@@ -27,10 +29,14 @@ foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\layout\bottomtablayout.xml
 item;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\values\styles.xml
+item;obj\Debug\90\res\drawable\splash_screen.xml
+item;obj\Debug\90\res\drawable\styles.xml
 item;obj\Debug\90\res\values\styles.xml
+layer-list;obj\Debug\90\res\drawable\splash_screen.xml
 LinearLayout;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\layout\bottomtablayout.xml
 paths;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\values\styles.xml
+resources;obj\Debug\90\res\drawable\styles.xml
 resources;obj\Debug\90\res\values\colors.xml
 resources;obj\Debug\90\res\values\styles.xml
 set;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\anim\enterfromleft.xml
@@ -38,6 +44,7 @@ set;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMob
 set;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\anim\exittoleft.xml
 set;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\anim\exittoright.xml
 style;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\values\styles.xml
+style;obj\Debug\90\res\drawable\styles.xml
 style;obj\Debug\90\res\values\styles.xml
 translate;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\anim\enterfromleft.xml
 translate;C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile.Android\obj\Debug\90\lp\39\jl\res\anim\enterfromright.xml

@@ -6,7 +6,8 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <application android:label="VitreoMobile.Android" android:name="android.app.Application" android:allowBackup="true" android:icon="@mipmap/icon" android:debuggable="true">
-    <activity android:configChanges="orientation|screenSize" android:icon="@mipmap/icon" android:label="VitreoMobile" android:theme="@style/MainTheme" android:name="crc648b4cc7b84a808fcd.MainActivity">
+    <activity android:configChanges="orientation|screenSize" android:icon="@mipmap/icon" android:label="VitreoMobile" android:theme="@style/MainTheme" android:name="crc648b4cc7b84a808fcd.MainActivity" />
+    <activity android:label=" " android:name="crc648b4cc7b84a808fcd.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

@@ -10,7 +10,7 @@ namespace VitreoMobile
         {
             InitializeComponent();
 
-            MainPage = new ListarPersonagens();
+             MainPage = new NavigationPage(new ListarPersonagens());
         }
 
         protected override void OnStart()

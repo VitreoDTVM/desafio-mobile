@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VitreoMobile.ViewModel;
 
 namespace VitreoMobile.Model
 {
@@ -12,6 +13,8 @@ namespace VitreoMobile.Model
         public string Descricao { get; set; }
         public string UrlImagem { get; set; }
         public string UrlWiki { get; set; }
+
+        public List<HQ> HQs { get; set; }
 
     }
 }
