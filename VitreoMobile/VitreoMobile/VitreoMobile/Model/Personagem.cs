@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using VitreoMobile.ViewModel;
 
@@ -14,7 +15,7 @@ namespace VitreoMobile.Model
         public string UrlImagem { get; set; }
         public string UrlWiki { get; set; }
 
-        public List<HQ> HQs { get; set; }
+        public ObservableCollection<HQ> HQs { get; set; }
 
     }
 }

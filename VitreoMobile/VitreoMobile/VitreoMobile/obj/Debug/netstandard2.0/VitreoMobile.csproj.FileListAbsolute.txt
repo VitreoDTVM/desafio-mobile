@@ -12,3 +12,4 @@ C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\VitreoMobile.pdb
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\View\ListarPersonagens.xaml.g.cs
 C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\View\PersonagemDetalheView.xaml.g.cs
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\VitreoMobile.csprojAssemblyReference.cache

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VitreoMobile.Model;
+using VitreoMobile.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,22 +15,19 @@ namespace VitreoMobile.View
     public partial class PersonagemDetalheView : ContentPage
     {
 
-        public Personagem Personagem { get; set; }
-        public PersonagemDetalheView(Personagem personagem)
+        public PersonagemDetalheView(Personagem p)
         {
             InitializeComponent();
             this.Title = "Detalhes";
-            this.Personagem = personagem;
-            this.BindingContext = this;
-            listView.ItemsSource = Personagem.HQs;
+            this.BindingContext = new PersonagemDetalheViewModel(p);
+            listView.ItemsSource = p.HQs;
+
+
         }
 
         protected override void OnAppearing()
         {
-            this.Personagem = Personagem;
-
-
-
+            listView.EndRefresh();
         }
     }
 }

@@ -25,38 +25,32 @@ namespace VitreoMobile
         public ObservableCollection<Personagem> Personagem { get; set; }
 
 
-        private bool aguarde;
-
-        public bool Aguarde
+        private bool Aguarde = true;
+        public bool aguarde
         {
-            get { return aguarde; }
-
-
+            get { return Aguarde; }
             set {
-                aguarde = value;
+                Aguarde = value;
                 OnPropertyChanged();
             }
         }
 
 
-
         public ListarPersonagens()
         {
             InitializeComponent();
-            //this.Personagem = await new ListagemPersonagensViewModel().getPersonagens();
             this.BindingContext = this;
             this.Title = "Personagens";
-            aguarde = true;
         }
 
         protected async override void OnAppearing()
         {
-            aguarde = true;
             this.Personagem = await new  ListagemPersonagensViewModel().getPersonagens();
 
             ListPersonagem.ItemsSource = Personagem;
             ListPersonagem.EndRefresh();
             aguarde = false;
+
 
         }
 
@@ -74,15 +68,9 @@ namespace VitreoMobile
         private void ListPersonagem_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Personagem personagem = (Personagem)e.Item;
-            //DisplayAlert("Teste", $"Voce tocou{personagem.Nome} ", "ok");
-
-              Navigation.PushAsync(new PersonagemDetalheView(personagem),true );
+            Navigation.PushAsync(new PersonagemDetalheView(personagem),true );
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //public void OnPropertyChanged([CallerMemberName] string name = "")
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        //}
+
     }
 }
