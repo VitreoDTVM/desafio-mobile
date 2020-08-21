@@ -1,0 +1,15 @@
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\bin\Debug\netstandard2.0\VitreoMobile.deps.json
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\bin\Debug\netstandard2.0\VitreoMobile.dll
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\bin\Debug\netstandard2.0\ref\VitreoMobile.dll
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\bin\Debug\netstandard2.0\VitreoMobile.pdb
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\VitreoMobile.AssemblyInfoInputs.cache
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\VitreoMobile.AssemblyInfo.cs
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\VitreoMobile.csproj.CoreCompileInputs.cache
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\VitreoMobile.dll
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\ref\VitreoMobile.dll
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\VitreoMobile.pdb
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\View\ListarPersonagens.xaml.g.cs
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\View\PersonagemDetalheView.xaml.g.cs
+C:\Users\yrvin\Documents\estudo\Vitreo\desafio-mobile\VitreoMobile\VitreoMobile\VitreoMobile\obj\Debug\netstandard2.0\VitreoMobile.csprojAssemblyReference.cache

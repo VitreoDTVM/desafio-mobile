@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="VitreoMobile.ListarPersonagens">
+    <StackLayout Padding="10,0,10,0">
+        <SearchBar TextChanged="SearchBar_TextChanged" ></SearchBar>
+        <ActivityIndicator x:Name="indicador" IsRunning="{Binding aguarde}" IsVisible="{Binding aguarde}" >
+        </ActivityIndicator>
+        <ListView x:Name="ListPersonagem" ItemsSource="{Binding Personagem}"
+                  ItemTapped="ListPersonagem_ItemTapped"
+          HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="2"
+                           Source="{Binding UrlImagem}"
+                           Aspect="AspectFill"
+                           HeightRequest="100"
+                           WidthRequest="100" />
+                            <Label Grid.Column="1"
+                           Text="{Binding Nome}"
+                           FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Descricao}"
+                           VerticalOptions="End" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
