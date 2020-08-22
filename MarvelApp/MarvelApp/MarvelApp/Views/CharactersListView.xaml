@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MarvelApp.Views.CharactersListView"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:imageConverter="clr-namespace:MarvelApp.Converters">
+    <ContentPage.Resources>
+        <imageConverter:ImageUrlConverter x:Key="ImageUrlConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="20" Opacity="{Binding Opacity}" IsEnabled="{Binding isEnable}">
+            <!-- Place new controls here -->
+            <SearchBar x:Name="searchBar" Placeholder="Refinar resultados" TextChanged="SearchBar_TextChanged" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
+            <RefreshView IsRefreshing="{Binding isRefreshing}" Command="{Binding RefreshCommand}">
+                <CollectionView SelectionMode="Single" ItemsSource="{Binding Entity}" SelectionChangedCommand="{Binding SelectionChangedCommand}" SelectedItem="{Binding SelectedCharacter}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2">
+                    </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                                <Image Source="{Binding Thumbnail.Path.AbsoluteUri, Converter={StaticResource ImageUrlConverter}}" HeightRequest="150" WidthRequest="150" Aspect="AspectFit" />
+                                <Label Text="{Binding Name}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </RefreshView>
+            <Label Text="Data provided by Marvel. © 2020 Marvel" HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
