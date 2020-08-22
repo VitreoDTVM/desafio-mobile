@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MarvelApp.Views.CharacterView"
+             xmlns:imgConverter="clr-namespace:MarvelApp.Converters"
+             Title="{Binding Entity.Name}">
+    <ContentPage.Resources>
+        <imgConverter:ImageUrlConverter x:Key="ImageUrlConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="20" Opacity="{Binding Opacity}" IsEnabled="{Binding isEnable}">
+            <Image Aspect="AspectFit" WidthRequest="150" HeightRequest="150" Source="{Binding Entity.Thumbnail.Path.AbsoluteUri, Converter={StaticResource ImageUrlConverter}}" />
+            <Label Text="{Binding Entity.Name}" HorizontalOptions="Center" FontSize="30" TextColor="Green" />
+            <Label Text="Description" TextColor="Black" FontAttributes="Bold" FontSize="14" />
+            <Label Text="{Binding Entity.Description}" FontSize="16" />
+            <Label Text="HQs" TextColor="Black" FontAttributes="Bold" FontSize="14" />
+            <ListView ItemsSource="{Binding Entity.Series.Items}" HasUnevenRows="True" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" FontSize="18" TextColor="Green" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Data provided by Marvel. © 2020 Marvel" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
