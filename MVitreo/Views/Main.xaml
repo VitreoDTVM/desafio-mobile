@@ -6,30 +6,32 @@
                     xmlns:c="clr-namespace:MVitreo.Converters"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
              prism:ViewModelLocator.AutowireViewModel="True"
-
+                   BackgroundColor="#211a17"
+                   NavigationPage.HasNavigationBar="false"
                    ios:Page.UseSafeArea="true">
     <ContentPage.Resources>
         <ResourceDictionary>
             <c:TextChangedConverter x:Key="TextChangedConverter" />
+            <c:ItemTappedConverter x:Key="ItemTappedConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
 
         <StackLayout>
-            <SearchBar Placeholder="Search Heroes">
+            <SearchBar Placeholder="Search Heroes" BackgroundColor="Gray">
                 <SearchBar.Behaviors>
                     <b:EventToCommandBehavior EventName="TextChanged" 
                                           Command="{Binding SearchCharacterCommand}"
                                           EventArgsConverter="{StaticResource TextChangedConverter}" />
                 </SearchBar.Behaviors>
             </SearchBar>
-
+            
             <ListView ItemsSource="{Binding Characters}"
                       IsRefreshing = "{Binding IsBusy, Mode=Default}"
                       HasUnevenRows="true"
                       Margin="10"
                       RowHeight="110"
-                   >
+                      BackgroundColor="DarkGray">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -44,10 +46,14 @@
                                     <Label Text="{Binding Name}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
                                 </StackLayout>
                             </StackLayout>
-
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped" 
+                                          Command="{Binding ShowCharacterCommand}"
+                                          EventArgsConverter="{StaticResource ItemTappedConverter}" />
+                </ListView.Behaviors>
             </ListView>
         </StackLayout>
 

@@ -17,42 +17,34 @@ namespace MVitreo.ViewModels
         private DelegateCommand<string> _SearchCharacterCommand;
         public DelegateCommand<string> SearchCharacterCommand => _SearchCharacterCommand ?? (_SearchCharacterCommand = new DelegateCommand<string>(async (TextChanged) => await SearchCharacter(TextChanged), (TextChanged) => !IsBusy));
 
+        private DelegateCommand<Character> _ShowCharacterCommand;
+        public DelegateCommand<Character> ShowCharacterCommand => _ShowCharacterCommand ?? (_ShowCharacterCommand = new DelegateCommand<Character>(async (itemSelect) => await ShowCharacter(itemSelect), (itemSelect) => !IsBusy));
+
+
         public MainViewModel(INavigationService navigationService,
                 IPageDialogService pageDialogService, IMarvelService marvelService) : base(navigationService, pageDialogService)
         {
             Characters = new ObservableCollection<Character>();
             MarvelService = marvelService;
         }
+
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
-            await LoadAsync();
         }
-        private async Task ExecuteExibirPersonagemCommand(Character character)
+
+        public override async void OnNavigatedTo(INavigationParameters parameters)
+        {
+        }
+
+        private async Task ShowCharacter(Character character)
         {
             var navigationParams = new NavigationParameters
             {
                 {"character", character}
             };
-
-
-            await NavigationService.NavigateAsync("DetalhesPage", navigationParams);
+            await NavigationService.NavigateAsync("Character", navigationParams);
         }
 
-        private async Task LoadAsync()
-        {
-            try
-            {
-
-                var personagensMarvel = await MarvelService.GetCharactersAsync("");
-
-                Characters.Clear();
-
-            }
-            catch (Exception ex)
-            {
-                await PageDialogService.DisplayAlertAsync("Error", "Erro ao Carregar personagens:" + ex.Message, "OK");
-            }
-        }
 
         private async Task SearchCharacter(string text)
         {
@@ -72,7 +64,7 @@ namespace MVitreo.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    await PageDialogService.DisplayAlertAsync("Erro", "Erro ao Carregar personagens:" + ex.Message, "OK");
+                    await PageDialogService.DisplayAlertAsync("Error", "Error loading character post: " + ex.Message, "OK");
                 }
                 finally
                 {

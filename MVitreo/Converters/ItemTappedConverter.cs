@@ -4,19 +4,22 @@ using Xamarin.Forms;
 
 namespace MVitreo.Converters
 {
-    public class TextChangedConverter : IValueConverter
+    public class ItemTappedConverter : IValueConverter
     {
+        
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is TextChangedEventArgs textChangedEventArgs))
-                throw new ArgumentException("Expected value to be of type textChangedEventArgs", nameof(value));
+            if (!(value is ItemTappedEventArgs itemTappedEventArgs))
+                throw new ArgumentException("Expected value to be of type ItemTappedEventArgs", nameof(value));
 
-            return textChangedEventArgs.NewTextValue;
+            return itemTappedEventArgs.Item;         
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return null;
+
         }
     }
 }
