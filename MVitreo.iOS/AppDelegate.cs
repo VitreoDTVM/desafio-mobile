@@ -29,11 +29,12 @@ namespace MVitreo.iOS
             {
                 global::Xamarin.Forms.Forms.Init();
                 LoadApplication(new App(new iOSInitializer()));
+                FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
                 AnimationViewRenderer.Init();
                 return base.FinishedLaunching(app, options);
             }
 
-           
+
         }
     }
 }

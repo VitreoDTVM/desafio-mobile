@@ -1,8 +1,55 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MVitreo.Views.Main">
+<forms:ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="http://xamarin.com/schemas/2014/forms" x:Class="MVitreo.Views.Main"
+                   xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                   xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                    xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+                    xmlns:c="clr-namespace:MVitreo.Converters"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             prism:ViewModelLocator.AutowireViewModel="True"
+
+                   ios:Page.UseSafeArea="true">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:TextChangedConverter x:Key="TextChangedConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
+
         <StackLayout>
-            <Button Text="teste"></Button>
+            <SearchBar Placeholder="Search Heroes">
+                <SearchBar.Behaviors>
+                    <b:EventToCommandBehavior EventName="TextChanged" 
+                                          Command="{Binding SearchCharacterCommand}"
+                                          EventArgsConverter="{StaticResource TextChangedConverter}" />
+                </SearchBar.Behaviors>
+            </SearchBar>
+
+            <ListView ItemsSource="{Binding Characters}"
+                      IsRefreshing = "{Binding IsBusy, Mode=Default}"
+                      HasUnevenRows="true"
+                      Margin="10"
+                      RowHeight="110"
+                   >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" >
+                                <ff:CachedImage
+                                    WidthRequest="100"
+                                    HeightRequest="100"
+                                    Source="{Binding Url}"
+                                    CacheDuration="7">
+                                </ff:CachedImage>
+                                <StackLayout Margin="8">
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
+
     </ContentPage.Content>
-</ContentPage>
+</forms:ContentPage>

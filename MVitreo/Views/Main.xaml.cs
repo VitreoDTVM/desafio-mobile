@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MVitreo.ViewModels;
 using Xamarin.Forms;
 
 namespace MVitreo.Views
@@ -11,5 +11,7 @@ namespace MVitreo.Views
         {
             InitializeComponent();
         }
+        
     }
 }
+

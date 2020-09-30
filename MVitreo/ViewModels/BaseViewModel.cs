@@ -22,6 +22,29 @@ namespace MVitreo.ViewModels
             PageDialogService = pageDialogService;
 
         }
+        bool isBusy;
+
+        public bool IsBusy
+        {
+            get => isBusy;
+            set
+            {
+                if (SetProperty(ref isBusy, value))
+                    IsNotBusy = !isBusy;
+            }
+        }
+
+        bool isNotBusy = true;
+
+        public bool IsNotBusy
+        {
+            get => isNotBusy;
+            set
+            {
+                if (SetProperty(ref isNotBusy, value))
+                    IsBusy = !isNotBusy;
+            }
+        }
 
         private bool _isActive;
         public bool IsActive
