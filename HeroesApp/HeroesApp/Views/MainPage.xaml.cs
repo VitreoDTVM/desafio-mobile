@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HeroesApp.ViewModels;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HeroesApp.Views
@@ -16,6 +12,7 @@ namespace HeroesApp.Views
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new MainPageViewModel();
         }
     }
 }
