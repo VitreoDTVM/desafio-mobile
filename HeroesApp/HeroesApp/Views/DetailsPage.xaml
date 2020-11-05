@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
+             ios:Page.UseSafeArea="True"
+             mc:Ignorable="d"
+             x:Class="HeroesApp.Views.DetailsPage"
+             Title="{Binding Title}">
+
+    <controls:AnimationPage.PageAnimation>
+        <controls:PushPageAnimation Duration="Medium" Subtype="FromLeft" />
+    </controls:AnimationPage.PageAnimation>
+
+    <!--<ScrollView>
+
+        <ScrollView.Background>
+            <LinearGradientBrush StartPoint="1,0">
+                <GradientStop Color="LightGray" Offset="0"/>
+                <GradientStop Color="#222" Offset="1"/>
+            </LinearGradientBrush>
+        </ScrollView.Background>-->
+
+        <Grid>
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="1,0">
+                    <GradientStop Color="LightGray" Offset="0"/>
+                    <GradientStop Color="#222" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="60*"/>
+            </Grid.RowDefinitions>
+
+            <ff:CachedImage
+                Source="{Binding UrlImage}"
+                Aspect="AspectFill"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"/>
+
+            <StackLayout
+                Grid.Row="1"
+                VerticalOptions="StartAndExpand"
+                Padding="15">
+                
+                <Label  
+                    Text="{Binding Description, TargetNullValue='Sem descrição'}"
+                    TextColor="#FFF"
+                    FontSize="Small"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+
+                <CollectionView
+                    Margin="10"
+                    ItemsSource="{Binding Comics}"
+                    HeightRequest="250"
+                    VerticalOptions="CenterAndExpand"
+                    SelectionMode="Single">
+
+                    <CollectionView.EmptyView>
+                        <Label
+                            Text="Nenhuma HQ foi encontrada"
+                            TextColor="#222"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"/>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemsLayout>
+
+                        <GridItemsLayout 
+                            Orientation="Horizontal" 
+                            HorizontalItemSpacing="10"/>
+
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Frame
+                                BackgroundColor="#FFF"
+                                CornerRadius="20"
+                                Padding="0"
+                                HeightRequest="150"
+                                WidthRequest="200"
+                                HasShadow="False">
+
+                                <Grid 
+                                    Margin="0"
+                                    RowSpacing="0">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="80*"/>
+                                        <RowDefinition Height="20*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ff:CachedImage
+                                        Source="{Binding Thumbnail.UrlImage}"
+                                        Aspect="Fill"/>
+
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        BackgroundColor="Red"
+                                        Margin="0">
+
+                                        <Label
+                                            Text="{Binding Title}"
+                                            TextColor="#FFF"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"/>
+
+                                    </StackLayout>
+
+                                </Grid>
+
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+            </StackLayout>
+        </Grid>
+    <!--</ScrollView>-->
+</controls:AnimationPage>
