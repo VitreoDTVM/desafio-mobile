@@ -3,31 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              ios:Page.UseSafeArea="True"
              mc:Ignorable="d"
-             x:Class="HeroesApp.Views.MainPage">
+             x:Class="HeroesApp.Views.MainPage"
+             BackgroundColor="#F0F0F0"
+             NavigationPage.HasNavigationBar="False">
 
     <StackLayout>
 
-        <Label Text="Teste"/>
+        <StackLayout
+            Margin="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="StartAndExpand"
+            Orientation="Horizontal"
+            HeightRequest="30">
 
-        <ListView
-            HasUnevenRows="True"
-            SeparatorVisibility="None"
-            ItemsSource="{Binding Characters}">
-            <ListView.ItemTemplate>
+            <Label
+                Text="MARVEL"
+                TextColor="DarkRed"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
+
+            
+
+        </StackLayout>
+
+        <SearchBar
+                Placeholder="Busca"/>
+        
+        <CollectionView
+            Margin="10"
+            ItemsSource="{Binding Characters}"
+            SelectedItem="{Binding Character}"
+            SelectionMode="Single"
+            >
+
+            <CollectionView.ItemsLayout>
+                
+                <GridItemsLayout 
+                    Span="2" 
+                    Orientation="Vertical" 
+                    VerticalItemSpacing="10" 
+                    HorizontalItemSpacing="10"/>
+                
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
 
-                        <Label
-                            Text="{Binding Name}"
-                            TextColor="#000"/>
+                    <Frame
+                        BackgroundColor="#FFF"
+                        CornerRadius="20"
+                        Padding="0"
+                        HeightRequest="150"
+                        HasShadow="False">
 
-                    </ViewCell>
+                        <Grid 
+                            Margin="0"
+                            RowSpacing="0">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="85*"/>
+                                <RowDefinition Height="15*"/>
+                            </Grid.RowDefinitions>
+
+                            <ff:CachedImage
+                                Source="{Binding Thumbnail.UrlImage}"
+                                Aspect="Fill"/>
+
+                            <StackLayout
+                                Grid.Row="1"
+                                BackgroundColor="Red"
+                                Margin="0">
+
+                                <Label
+                                    Text="{Binding Name}"
+                                    TextColor="#FFF"
+                                    HorizontalOptions="CenterAndExpand"/>
+
+                            </StackLayout>
+                            
+                        </Grid>
+
+                    </Frame>
+                    
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         
     </StackLayout>
 

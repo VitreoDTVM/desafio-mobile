@@ -1,4 +1,5 @@
 ﻿using HeroesApp.Models;
+using HeroesApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,6 +12,20 @@ namespace HeroesApp.ViewModels
     public class MainPageViewModel : BaseViewModel
     {
         public List<CharacterModel> Characters { get; set; }
+
+        private CharacterModel _character;
+        public CharacterModel Character
+        {
+            get => _character;
+            set
+            {
+                if(value != null)
+                {
+                    _character = value;
+                    NavigateToDetail(value);
+                }
+            }
+        }
 
         public MainPageViewModel()
         {
@@ -35,6 +50,11 @@ namespace HeroesApp.ViewModels
             {
                 Debug.WriteLine(ex.Message);
             }
+        }
+
+        private async void NavigateToDetail(CharacterModel character)
+        {
+            await NavigationService.NavigateTo(new DetailsPage(character));
         }
     }
 }
