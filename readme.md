@@ -14,6 +14,6 @@
 
 ## Telas do APP
 
-![](ScreenShot/01.jpeg)
-![](ScreenShot/02.jpeg)
-![](ScreenShot/03.jpeg)
+![](Screenshot/01.jpeg)
+![](Screenshot/02.jpeg)
+![](Screenshot/03.jpeg)
