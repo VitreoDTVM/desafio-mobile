@@ -9,7 +9,7 @@
             Copyright = copyright;
             AttributionText = attribuionText;
             Etag = eTag;
-            Items = items;
+            Data = items;
         }
 
         public int Code { get; set; }
@@ -17,6 +17,6 @@
         public string Copyright { get; set; }
         public string AttributionText { get; set; }
         public string Etag { get; set; }
-        public DataItens<T> Items { get; set; }
+        public DataItens<T> Data { get; set; }
     }
 }

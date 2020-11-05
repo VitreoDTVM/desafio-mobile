@@ -8,6 +8,6 @@ namespace HeroesApp.Models
         public int Limit { get; set; }
         public int Total { get; set; }
         public int Count { get; set; }
-        public List<T> Results { get; set; }
+        public T[] Results { get; set; }
     }
 }

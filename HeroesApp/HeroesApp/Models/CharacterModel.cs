@@ -10,6 +10,6 @@ namespace HeroesApp.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public ImageModel Thumbnail { get; set; }
-        public List<ComicModel> Comics { get; set; }
+        public ComicModel Comics { get; set; }
     }
 }
