@@ -14,6 +14,6 @@
 
 ## Telas do APP
 
-![](Screenshot/01.jpeg?w=512)
-![](Screenshot/02.jpeg?w=512)
-![](Screenshot/03.jpeg?w=512)
+![](Screenshot/01.jpeg?w=100)
+![](Screenshot/02.jpeg?w=100)
+![](Screenshot/03.jpeg?w=100)
