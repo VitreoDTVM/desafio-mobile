@@ -1,7 +1,4 @@
 ﻿using HeroesApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HeroesApp.Interfaces
@@ -9,6 +6,8 @@ namespace HeroesApp.Interfaces
     public interface IMarvelService
     {
         Task<BaseModel<CharacterModel>> GetCharacters();
-        Task GetCharactersById(long id);
+        Task<BaseModel<CharacterModel>> GetCharacters(string filter);
+        Task<BaseModel<CharacterModel>> GetCharacters(int offset);
+        Task<BaseModel<ComicModel>> GetComicById(long characterId);
     }
 }

@@ -1,7 +1,12 @@
 ﻿using Acr.UserDialogs;
+using FormsControls.Base;
+using HeroesApp.Helpers;
 using HeroesApp.Interfaces;
 using HeroesApp.Services;
 using HeroesApp.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using System;
 using Xamarin.Forms;
 
@@ -32,6 +37,9 @@ namespace HeroesApp
 
         protected override void OnStart()
         {
+            AppCenter.Start($"ios={Constants.IOS_KEY}" +
+                  $"android={Constants.ANDROID_KEY}",
+                  typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()

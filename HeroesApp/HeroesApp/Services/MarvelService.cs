@@ -18,7 +18,6 @@ namespace HeroesApp.Services
         {
             try
             {
-                //string timestamp = (DateTime.Now.ToUniversalTime() - new DateTime(2020, 1, 1)).TotalSeconds.ToString();
                 string timestamp = "1";
                 string hash = CreateHash(String.Format("{0}{1}{2}", timestamp, Constants.PRIVATE_KEY, Constants.API_KEY));
 
@@ -28,8 +27,91 @@ namespace HeroesApp.Services
                         ts = timestamp,
                         apikey = Constants.API_KEY,
                         hash = hash,
+                        limit = 100,
                     })
                     .GetJsonAsync<BaseModel<CharacterModel>>();
+
+                return characters;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+
+                return null;
+            }
+        }
+
+        public async Task<BaseModel<CharacterModel>> GetCharacters(string filter)
+        {
+            try
+            {
+                string timestamp = "1";
+                string hash = CreateHash(String.Format("{0}{1}{2}", timestamp, Constants.PRIVATE_KEY, Constants.API_KEY));
+
+                var characters = await Url.Combine(Constants.BASE_URL + "/characters")
+                    .SetQueryParams(new
+                    {
+                        ts = timestamp,
+                        apikey = Constants.API_KEY,
+                        hash = hash,
+                        limit = 100,
+                        nameStartsWith = filter,
+                    })
+                    .GetJsonAsync<BaseModel<CharacterModel>>();
+
+                return characters;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+
+                return null;
+            }
+        }
+
+        public async Task<BaseModel<CharacterModel>> GetCharacters(int offset)
+        {
+            try
+            {
+                string timestamp = "1";
+                string hash = CreateHash(String.Format("{0}{1}{2}", timestamp, Constants.PRIVATE_KEY, Constants.API_KEY));
+
+                var characters = await Url.Combine(Constants.BASE_URL + "/characters")
+                    .SetQueryParams(new
+                    {
+                        ts = timestamp,
+                        apikey = Constants.API_KEY,
+                        hash = hash,
+                        limit = offset,
+                        offset = offset,
+                    })
+                    .GetJsonAsync<BaseModel<CharacterModel>>();
+
+                return characters;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+
+                return null;
+            }
+        }
+
+        public async Task<BaseModel<ComicModel>> GetComicById(long characterId)
+        {
+            try
+            {
+                string timestamp = "1";
+                string hash = CreateHash(String.Format("{0}{1}{2}", timestamp, Constants.PRIVATE_KEY, Constants.API_KEY));
+
+                var characters = await Url.Combine(Constants.BASE_URL + $"/characters/{characterId}/comics")
+                    .SetQueryParams(new
+                    {
+                        ts = timestamp,
+                        apikey = Constants.API_KEY,
+                        hash = hash,
+                    })
+                    .GetJsonAsync<BaseModel<ComicModel>>();
 
                 return characters;
             }
@@ -62,9 +144,6 @@ namespace HeroesApp.Services
             return hash;
         }
 
-        public Task GetCharactersById(long id)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -22,6 +22,7 @@ namespace HeroesApp.iOS
             global::Xamarin.Forms.Forms.SetFlags("Brush_Experimental");
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
+            FormsControls.Touch.Main.Init();
 
             LoadApplication(new App());
 

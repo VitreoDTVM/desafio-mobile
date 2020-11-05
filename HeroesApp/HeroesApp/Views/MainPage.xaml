@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
              ios:Page.UseSafeArea="True"
              mc:Ignorable="d"
              x:Class="HeroesApp.Views.MainPage"
              NavigationPage.HasNavigationBar="False">
+
+    <controls:AnimationPage.PageAnimation>
+        <controls:PushPageAnimation Duration="Medium" Subtype="FromRight" />
+    </controls:AnimationPage.PageAnimation>
 
     <StackLayout>
 
@@ -24,36 +29,30 @@
             HorizontalOptions="FillAndExpand"
             VerticalOptions="StartAndExpand"
             Orientation="Horizontal"
-            BackgroundColor="Transparent"
+            BackgroundColor="Red"
             HeightRequest="40">
 
-            
-
-            <Label
-                Text="MARVEL"
-                TextColor="#000"
-                FontSize="Medium"
-                FontAttributes="Bold"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                />
-
-            
+            <Image
+                Source="marvellogo"
+                HorizontalOptions="CenterAndExpand"/>
 
         </StackLayout>
 
         <SearchBar
-            Placeholder="Busca"
+            Placeholder="Search"
             BackgroundColor="Transparent"
             CancelButtonColor="#222"
             PlaceholderColor="#222"
-            TextColor="#222"/>
+            TextColor="#222"
+            Text="{Binding TextFilter}"/>
 
         <RefreshView
             IsRefreshing="{Binding IsBusy}"
-            Command="{Binding RefreshingCommand}">
+            Command="{Binding RefreshingCommand}"
+            BackgroundColor="Transparent">
             
             <CollectionView
+                BackgroundColor="Transparent"
                 Margin="10"
                 ItemsSource="{Binding Characters}"
                 SelectedItem="{Binding Character}"
@@ -61,8 +60,19 @@
 
                 <CollectionView.EmptyView>
                     <Label
-                        Text="Nenhum heroi foi encontrado"/>
+                        Text="Nenhum personagem foi encontrado"
+                        TextColor="#222"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
                 </CollectionView.EmptyView>
+
+                <CollectionView.Footer>
+                    <Button 
+                        Text="More"
+                        Command="{Binding MoreDataCommand}"/>
+                </CollectionView.Footer>
 
                 <CollectionView.ItemsLayout>
 
@@ -120,4 +130,4 @@
 
     </StackLayout>
 
-</ContentPage>
+</controls:AnimationPage>
