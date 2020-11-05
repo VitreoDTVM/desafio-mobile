@@ -9,10 +9,26 @@
              x:Class="HeroesApp.Views.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+
+        <Label Text="Teste"/>
+
+        <ListView
+            HasUnevenRows="True"
+            SeparatorVisibility="None"
+            ItemsSource="{Binding Characters}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <Label
+                            Text="{Binding Name}"
+                            TextColor="#000"/>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
     </StackLayout>
 
 </ContentPage>

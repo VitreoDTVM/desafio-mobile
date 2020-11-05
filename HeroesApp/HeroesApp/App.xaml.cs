@@ -25,6 +25,7 @@ namespace HeroesApp
         private void RegisterServices()
         {
             DependencyService.Register<INavigationService, NavigationService>();
+            DependencyService.Register<IMarvelService, MarvelService>();
         }
 
         protected override void OnStart()
