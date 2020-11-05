@@ -13,6 +13,8 @@ namespace HeroesApp
 
         public App()
         {
+            Xamarin.Forms.Device.SetFlags(new string[] { "Brush_Experimental", "Shapes_Experimental" });
+
             InitializeComponent();
 
             Current = this;

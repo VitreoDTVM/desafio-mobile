@@ -3,15 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              ios:Page.UseSafeArea="True"
              mc:Ignorable="d"
-             x:Class="HeroesApp.Views.DetailsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="HeroesApp.Views.DetailsPage"
+             Title="{Binding Title}">
+    
+    
+
+    <ScrollView>
+
+        <ScrollView.Background>
+            <LinearGradientBrush StartPoint="1,0">
+                <GradientStop Color="LightGray" Offset="0"/>
+                <GradientStop Color="#222" Offset="1"/>
+            </LinearGradientBrush>
+        </ScrollView.Background>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+
+            <ff:CachedImage
+                Source="{Binding UrlImage}"
+                Aspect="AspectFill"/>
+
+            <StackLayout
+                Grid.Row="1"
+                Padding="15">
+                
+                <Label  
+                    Text="{Binding Description}"
+                    TextColor="#FFF"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

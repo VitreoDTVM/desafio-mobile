@@ -1,4 +1,5 @@
-﻿using HeroesApp.Models;
+﻿using Acr.UserDialogs;
+using HeroesApp.Models;
 using HeroesApp.Views;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace HeroesApp.ViewModels
 {
@@ -27,8 +30,12 @@ namespace HeroesApp.ViewModels
             }
         }
 
+        public Command RefreshingCommand { get; set; }
+
         public MainPageViewModel()
         {
+            RefreshingCommand = new Command(LoadData);
+
             LoadData();
         }
 
@@ -36,6 +43,15 @@ namespace HeroesApp.ViewModels
         {
             try
             {
+                UserDialogs.Instance.ShowLoading("Carregando...");
+
+                var current = Connectivity.NetworkAccess;
+                if (current != NetworkAccess.Internet)
+                {
+                    App.Current.ShowMessageError("Sem acesso a internet");
+                    return;
+                }
+
                 var res = await MarvelService.GetCharacters();
 
                 if (res == null)
@@ -49,6 +65,12 @@ namespace HeroesApp.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+
+                Characters = new List<CharacterModel>();
+            }
+            finally
+            {
+                UserDialogs.Instance.HideLoading();
             }
         }
 
