@@ -1,7 +1,12 @@
 ﻿using Acr.UserDialogs;
+using FormsControls.Base;
+using HeroesApp.Helpers;
 using HeroesApp.Interfaces;
 using HeroesApp.Services;
 using HeroesApp.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using System;
 using Xamarin.Forms;
 
@@ -13,6 +18,8 @@ namespace HeroesApp
 
         public App()
         {
+            Xamarin.Forms.Device.SetFlags(new string[] { "Brush_Experimental", "Shapes_Experimental" });
+
             InitializeComponent();
 
             Current = this;
@@ -25,10 +32,14 @@ namespace HeroesApp
         private void RegisterServices()
         {
             DependencyService.Register<INavigationService, NavigationService>();
+            DependencyService.Register<IMarvelService, MarvelService>();
         }
 
         protected override void OnStart()
         {
+            AppCenter.Start($"ios={Constants.IOS_KEY}" +
+                  $"android={Constants.ANDROID_KEY}",
+                  typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()

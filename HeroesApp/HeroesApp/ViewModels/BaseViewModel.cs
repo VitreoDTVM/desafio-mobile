@@ -8,10 +8,16 @@ namespace HeroesApp.ViewModels
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public INavigationService NavigationService { get; set; }
+        public IMarvelService MarvelService { get; set; }
+
+        public string Title { get; set; }
 
         public BaseViewModel()
         {
             NavigationService = DependencyService.Get<INavigationService>();
+            MarvelService = DependencyService.Get<IMarvelService>();
+
+            Title = "";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
